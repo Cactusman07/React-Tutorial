@@ -15,10 +15,11 @@
   "homepage": "https://github.com/Cactusman07/React-Tutorial#readme",
   "devDependencies": {},
   "dependencies": {
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-scripts": "2.1.5",
-    "axios": "^0.18.0"
+    "react-scripts": "2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
