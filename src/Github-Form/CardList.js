@@ -8,6 +8,7 @@ const Card = (props) => {
         <div style={{fontSize: '1.25em', fontWeight: 'bold'}}>{props.name}</div>
         <div>{props.company}</div>
       </div>
+      <button className="btn btn-primary add-card">Add to Database</button>
     </div>
   );
 };

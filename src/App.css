@@ -2,6 +2,10 @@
   margin: 30px;
 }
 
+.add-card{
+  margin-left:35px;
+}
+
 /* Game Element Styles */
 .fa-star{
   margin: 0.5em;
