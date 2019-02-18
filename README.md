@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Profile.Backend folder also contains a VS 2017 ASP.NET project, which (will eventually) utilizes XUnit Testing, Swagger, API implementation, and SQL Database integration. 
+
 ## Available Scripts
 
 In the project directory, you can run:
