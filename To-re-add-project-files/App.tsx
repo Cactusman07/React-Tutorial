@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Game from './Game/Game';
+/* import Game from './Game/Game';
 import Button from './Counter/Buttons';
 import Result from './Counter/Result';
 import Form from './Github-Form/Form';
-import CardList from './Github-Form/CardList';
+import CardList from './Github-Form/CardList'; */
 
 class App extends Component {
   state = { // equivalent to defining a constructor - constructor(props) {super(props)}
@@ -25,7 +25,7 @@ class App extends Component {
     ]
   } 
 
-  addNewCard = (cardInfo) => {
+ /*  addNewCard = (cardInfo) => {
     this.setState(prevState => ({
       cards: prevState.cards.concat(cardInfo)
     }));
@@ -35,12 +35,12 @@ class App extends Component {
     this.setState((prevState) => ({
       counter: prevState.counter + incrementValue
     }));
-  };
+  }; */
 
   render() {
     return(
       <div>
-        <div>
+        {/* <div>
           <Button incrementValue={1} onClickFunction={this.incrementCounter}/>
           <Button incrementValue={5} onClickFunction={this.incrementCounter}/>
           <Button incrementValue={10} onClickFunction={this.incrementCounter}/>
@@ -57,7 +57,7 @@ class App extends Component {
           <p>Get User Profile Photo, Name & Company name from Github. Enter & submit a username to test.</p>
           <Form onSubmit={this.addNewCard}/>
           <CardList cards={this.state.cards} />
-        </div>
+        </div> */}
         <div>
           
         </div>
