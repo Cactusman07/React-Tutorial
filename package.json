@@ -1,12 +1,13 @@
 {
   "name": "react-tutorial",
   "version": "1.0.0",
-  "description": "A project to help understand & get started with using React & Redux",
-  "main": "main.js",
+  "description": "This project is to help learn how to set up Babel, Webpack & React from scratch, and then implement typescript and redux with a backend SQL database.",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Cactusman07/React-Tutorial.git"
   },
+  "keywords": [],
   "author": "Cactusman07",
   "license": "ISC",
   "bugs": {
@@ -14,39 +15,28 @@
   },
   "homepage": "https://github.com/Cactusman07/React-Tutorial#readme",
   "devDependencies": {
-    "@types/node": "^11.9.4",
-    "@types/webpack": "^4.4.24",
-    "@types/webpack-dev-server": "^3.1.2",
-    "awesome-typescript-loader": "^5.2.1",
-    "html-webpack-plugin": "^3.2.0",
-    "source-map-loader": "^0.2.4",
-    "ts-node": "^8.0.2",
-    "typescript": "^3.3.3",
-    "webpack": "^4.29.4",
-    "webpack-cli": "^3.2.3"
-  },
-  "dependencies": {
-    "@types/react": "^16.8.3",
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
-    "axios": "^0.18.0",
-    "lodash": "^4.17.11",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-scripts": "2.1.5"
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.5",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "redux": "^4.0.1",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.0"
   },
+  "dependencies": {},
   "scripts": {
-    "start": "webpack --mode development",
-    "build": "webpack --mode production",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
+  }
 }

@@ -1,0 +1,69 @@
+/* Study notes. */
+
+
+__** What is Typescript? **__
+Typescript = open source, typed superset of JavaScript by Microsoft. Compiles down to plain Javascript. TypeScript is just extended JavaScript. You can rename a .js file to a .ts file and it will work just fine. TypeScript adds type support to JavaScript. With TypeScript we get IDE / intellesense support also. 
+
+TypeScript, unlike traditional JavaScript, encourages let & const declarations. JavaScript only has global scope and function scope, there is no block level scope. Let & Const declarations support block level scoping, and you can't re-declare a variable multiple times. Const variables must be initialized, where as Let can just be declared. Let variables often change, where Const varialbes are consistent and don't change. 
+You can also utilize the 'any' type to assign different variable types (if you're unsure of what type value to use). Any encompasses any type value in TypeScript and doesn't throw any errors on any value declaration. 
+Type Unknown is similar to the Any type, except that when it gets declared, you need to use type assertion to treat it as a certain type, before applying methods to it.
+Declaring Types is also optional, but TypeScript infers the type of variable if you declare it and initialize it inline. 
+
+You can declare multi types, using the | character. This is different from the Any type, as it restricts the types you can assign. 
+
+In TypeScript you can assign Types as function parameters. You can have Optional parameters, or Default parameters. You can make parameters optional by using the ? character after the parameter. You can have any number of Optional parameters, but they must be declared after the required parameters. Default parameters just have a set value as a parameter. 
+
+It is possible to specify an object as a Type in TypeScript. We can create interfaces to use as a type, also with optional properties.
+
+In plain JavaScript there is no concept of Classes and inheritence is through prototypical inheritance. TypeScript, just like ES6, supports Classes to build object orientated class based approach. You can create new instances of instansiated classes, like you can in C#. You can also now have class based inheritance. Use the extends keyword to extend from another class, and then use the super keyword to utilize that extended classes properties. 
+
+Access Modifiers are basically keywords that set the accessibility of methods and properties within classes - Public, Private and Protected. By default all members are Public.
+
+
+__** REACT **__
+Stateless / Functional React Components (Dumb components).
+These are plain Javascript funtion that takes props as arguments and returns a react element. They do not retain internal state, or have backing instances, and don't have the component lifecycle methods. They can't remember or give context to other parts of the UI.
+
+Class component or Stateful Components
+Components which manage / modify state. You can change the state using this.setState. Stateful components provide the necessary context glue. Plays with all life cycle methods of React.
+
+Container / Presentational principle
+This is a pattern for React components. The container component is the one that carries all the logic: functions for holding state changes, internal component state, etc. 
+
+In contrast a presentational component is merely used for displaying the intended markup. These are plain JS functions, recieving data from the container component as props. 
+
+
+__ ** REDUX ** __
+Redux is a state management library. It offers a lot of convenience for a JavaScript developer - debugging, action replaying, etc. Redux is not often useful for smaller apps, but it shines in bigger applciations. 
+Redux stores state in it's 'Store' - the Redux store is fundamental: the state of the whole application lives inside the store. 
+The state in Redux comes from reducers. Reducers produce the state of the application. The state must be return entirely from reducers. 
+A Reducer is a JavaScript function that takes two parameters: the current state, and an action. A Reducer must be pure (a pure function is one that returns the exact same output for the given input).
+
+
+__** Webpack **__
+Webpack is a static module bundler for JS applications. It's core concepts are 
+- Entry: What webpack uses to start building out / resolving it's dependencies
+- Output: Output property tells Webpack where to output the bundles it creates and how to name them
+- Loaders: Loaders enable Webpack to process different types of imported files and convert them into valid modules when it encounters a specific type of file. Loaders have two properties in the config file - test & use. Test identifies which files should be transformed, and Use indicates which loader can be used to do transforming.
+- Plugins
+
+There are four features in Typescript that don't compile in Babel due to its single-file emit archetecture
+
+1. Don't use namespaces - they're outdated. Use ES6 modules (import / export) instead.
+2. Casting a type with the <newtype>x syntax: use x as newtype instead. 
+3. Const enums - resort to regular enums for now. 
+4. Legecy style import / export syntax. I.E: import foo = require(..) and export = foo;
+
+
+__** Babel **__
+Babel is a toolchain that is mainly used to compile ECMAScript2015+ to a backwards compatible version of JavaScript in current and older browsers or environment. Babel can convert jsx to js
+
+
+
+
+ToDo: 
+- Finish react tutorials
+- complete back end, with SQL database integration
+- convert to typescript
+- implement redux
+
