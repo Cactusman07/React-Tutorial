@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was started from scratch, following this tutorial: https://www.valentinog.com/blog/react-webpack-babel/
+
+To learn TypeScript, I followed this video tutorial and took notes: https://www.youtube.com/watch?v=WBPrJSw7yQA 
+
+## Next steps: 
+- Convert work already done to use TypeScript, and setup relative scripts - watch, build, start. Use TypeScript, Babel & Webpack.
+- Continue tutorial on how to integrate Redux into solution
+- Create backend API / web service that reads, writes, and deletes records from an SQL database. 
+- Finish React Tutorials
 
 Profile.Backend folder also contains a VS 2017 ASP.NET project, which (will eventually) utilizes XUnit Testing, Swagger, API implementation, and SQL Database integration. 
 
