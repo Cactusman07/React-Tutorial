@@ -35,9 +35,21 @@ In contrast a presentational component is merely used for displaying the intende
 
 __ ** REDUX ** __
 Redux is a state management library. It offers a lot of convenience for a JavaScript developer - debugging, action replaying, etc. Redux is not often useful for smaller apps, but it shines in bigger applciations. 
-Redux stores state in it's 'Store' - the Redux store is fundamental: the state of the whole application lives inside the store. 
-The state in Redux comes from reducers. Reducers produce the state of the application. The state must be return entirely from reducers. 
-A Reducer is a JavaScript function that takes two parameters: the current state, and an action. A Reducer must be pure (a pure function is one that returns the exact same output for the given input).
+
+Redux stores state in it's 'Store' - the Redux store is fundamental: the state of the whole application lives inside the store. It orchestrates all the moving parts of Redux. 
+
+The state in Redux comes from reducers. Reducers produce the state of the application. The state must be return entirely from reducers. The state lives as a single object within the Store. 
+
+A Reducer is a JavaScript function that takes two parameters: the current state, and an action. A Reducer must be pure (a pure function is one that returns the exact same output for the given input). A Reducer is the most important concept in Redux, as Reducers produce the state of the applciation. The second principle of Redux says the only way to change the state is by sending a signal to the store. This signal is an "Action" - Dispatching an Action is the process of sending out a signal. The Reducer calculates the next State depending on the Action Type. It should return at least the initial State when no Action Type matches. When it does match, the Reducer calculates the next State and returns a new object. Reducers will grow as your app will become bigger - you can split a big reducer into separate functions and combine them with combineReducers.
+
+Redux Actions are nothing mroe than JavaScript objects. Each Action needs a Type Property for describing how the state should change. It is best practice to wrap every action within a function. Such function is called an Action Creator. The Type Property is nothing more than a string, so the reducer will use that string to determine how to calculate the next state. Therefore, it's better to have Action Types declared as constants to avoid difficult to debug errors. As soon as the Store receives an actionot triggers a Reducer, which returns the next State.
+
+Tehre are two key points for avoiding mutation in Redux - using concat(), slice(), and ...spread for arrays. And using Object.assign() and ...spread for objects. 
+
+The Redux store exposes a simple API for managing state. The most important methods are: 
+- getState for accessing the current state of the application. 
+- dispatch for dispatching an action
+- subscribe for listening on state changes
 
 
 __** Webpack **__
