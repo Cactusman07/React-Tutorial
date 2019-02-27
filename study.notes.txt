@@ -44,12 +44,28 @@ A Reducer is a JavaScript function that takes two parameters: the current state,
 
 Redux Actions are nothing mroe than JavaScript objects. Each Action needs a Type Property for describing how the state should change. It is best practice to wrap every action within a function. Such function is called an Action Creator. The Type Property is nothing more than a string, so the reducer will use that string to determine how to calculate the next state. Therefore, it's better to have Action Types declared as constants to avoid difficult to debug errors. As soon as the Store receives an actionot triggers a Reducer, which returns the next State.
 
-Tehre are two key points for avoiding mutation in Redux - using concat(), slice(), and ...spread for arrays. And using Object.assign() and ...spread for objects. 
+There are two key points for avoiding mutation in Redux - using concat(), slice(), and ...spread for arrays. And using Object.assign() and ...spread for objects. 
 
 The Redux store exposes a simple API for managing state. The most important methods are: 
-- getState for accessing the current state of the application. 
-- dispatch for dispatching an action
-- subscribe for listening on state changes
+- getState() for accessing the current state of the application. 
+- dispatch() for dispatching an action
+- subscribe() for listening on state changes
+
+Use store.getState() in the dev tools to access the current State of the store. We listen for State updates with the .subscribe() method - this accepts a callback that will fire whenever an action is dispatched. Dispatching an Action means notifying the store that we want to change the State.
+
+To change the state in Redux we need to dispatch an action. You do this by calling the .dispatch() method. 
+
+Redux on it's own is Framework Agnostic. You can use it with Vanilla JS, with Angular, React, etc. 
+
+Install react-redux (npm i react-redux --save-dev), as it is a Redux binding for React. It's a small library connecting the two in an efficient way. It connects a React component with the Redux store. The fundamental things to know are: 
+- The mapStateToProps() function - this function connects a part of the Redux state to the props of a React component (just as it says it will).
+- The mapDispatchToProps() function - this works for Actions. It connects Redux actions to React props, this was a connected React component will be able to dispathc actions. 
+
+Provider is a high order component coming from the React-Redux library. It wraps up your application and makes it aware of the entire Redux's store. In Redux the Store manages everything, and React must talk to the Store for accessing the State and dispatching Actions. 
+
+Always remember the State in Redux comes from Reducers. Get into a habit of validating PropTypes with TypeScript. 
+
+
 
 
 __** Webpack **__
