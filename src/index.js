@@ -1,1 +1,3 @@
-import index from "./js/index"
+//src/index.js
+
+import index from "./js/index";

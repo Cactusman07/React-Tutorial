@@ -1,6 +1,7 @@
 // src/js/components/List.jsx
 // The List component receives the prop articles which is a copy of the articles array in Redux State. 
 //It comes from the Reducer
+// The List component is connected to the Redux Store and re-renders whenever a new item is added. 
 
 import React from "react";
 import { connect } from "react-redux";

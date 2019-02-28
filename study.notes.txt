@@ -25,12 +25,14 @@ Stateless / Functional React Components (Dumb components).
 These are plain Javascript funtion that takes props as arguments and returns a react element. They do not retain internal state, or have backing instances, and don't have the component lifecycle methods. They can't remember or give context to other parts of the UI.
 
 Class component or Stateful Components
-Components which manage / modify state. You can change the state using this.setState. Stateful components provide the necessary context glue. Plays with all life cycle methods of React.
+Components which manage / modify state. A Stateful component in React is a component carrying it's own local state. You can change the state using this.setState. Stateful components provide the necessary context glue. Plays with all life cycle methods of React.
 
 Container / Presentational principle
 This is a pattern for React components. The container component is the one that carries all the logic: functions for holding state changes, internal component state, etc. 
 
 In contrast a presentational component is merely used for displaying the intended markup. These are plain JS functions, recieving data from the container component as props. 
+
+Even when using Redux, it's totally fine to have Stateful Components. Not every piece of an application's state should go inside Redux.
 
 
 __ ** REDUX ** __
@@ -57,13 +59,14 @@ To change the state in Redux we need to dispatch an action. You do this by calli
 
 Redux on it's own is Framework Agnostic. You can use it with Vanilla JS, with Angular, React, etc. 
 
-Install react-redux (npm i react-redux --save-dev), as it is a Redux binding for React. It's a small library connecting the two in an efficient way. It connects a React component with the Redux store. The fundamental things to know are: 
+Install react-redux (npm i react-redux --save-dev) and the relative @type, as it is a Redux binding for React. It's a small library connecting the two in an efficient way. It connects a React component with the Redux store. The fundamental things to know are: 
 - The mapStateToProps() function - this function connects a part of the Redux state to the props of a React component (just as it says it will).
-- The mapDispatchToProps() function - this works for Actions. It connects Redux actions to React props, this was a connected React component will be able to dispathc actions. 
+- The mapDispatchToProps() function - this works for Actions. It connects Redux actions to React props, this was a connected React component will be able to dispatch actions. 
 
 Provider is a high order component coming from the React-Redux library. It wraps up your application and makes it aware of the entire Redux's store. In Redux the Store manages everything, and React must talk to the Store for accessing the State and dispatching Actions. 
 
-Always remember the State in Redux comes from Reducers. Get into a habit of validating PropTypes with TypeScript. 
+The key for connecting a React component with Redux is 'Connect' - this takes at least one argument (the first argument for connect must be null when mapStateToProps is absent, otherwise you'll get a TypeError: dispatch is not a function). Always remember the State in Redux comes from Reducers. Get into a habit of validating PropTypes with TypeScript. 
+
 
 
 
