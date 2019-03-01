@@ -67,6 +67,14 @@ Provider is a high order component coming from the React-Redux library. It wraps
 
 The key for connecting a React component with Redux is 'Connect' - this takes at least one argument (the first argument for connect must be null when mapStateToProps is absent, otherwise you'll get a TypeError: dispatch is not a function). Always remember the State in Redux comes from Reducers. Get into a habit of validating PropTypes with TypeScript. 
 
+Redux Middleware. 
+So far, we have the Store which orchestrates all the interactions in Redux. We also have the Reducer which is a producer (Reducers make the State in Redux). There are Actions, which are plain JS objects with a property named type. We also have Action Creaters which are plain JS functions that return Redux Actions. The State is immutable and can change, only in response to Actions. 
+
+The main point of Redux is to move the logic out of the React components. If we want to check the Action Payload before the Action is passed to the Reducer, we need to check the Application's flow and alter its behaviour. That's what Redux Middleware does. 
+
+A Redux Middleware is a function that is able to intercept, and act accordingly, our actions, before they reach the Reducer. In it's basic form, it is a function, returning a function, which takes next as a parameter. Then the inner functions returns another function which takes Action as a parameter and finally returns next(action). 
+
+Middleware in Redux is super important. It holds the bulk of your applications logic. Inside Middleware you can access getState and dispatch. The logic can live outside of React, it becomes reusable, it can be tested, and we keep the components clean. 
 
 
 
