@@ -76,6 +76,10 @@ A Redux Middleware is a function that is able to intercept, and act accordingly,
 
 Middleware in Redux is super important. It holds the bulk of your applications logic. Inside Middleware you can access getState and dispatch. The logic can live outside of React, it becomes reusable, it can be tested, and we keep the components clean. 
 
+You should always return next(action) in your middleware. If you forget to return next(action), then the application will stop and no other action will reach the reducer. 
+
+For using Redux Dev Tools together with other middleware, you should use the below command, or import redux-devtools-extension
+	const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 

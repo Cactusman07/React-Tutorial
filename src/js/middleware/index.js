@@ -10,7 +10,9 @@ const forbiddenWords = ["spam", "Liverpool FC", "poos"];
 export function forbiddenWordsMiddleware({ dispatch }) {
   return function(next){
     return function(action){
-      // do your stuff
+
+      // When action type = ADD_ARTICLE, check the if the payload.title contains a "bad word." If it doesn't, then dispatch
+      // an action of Type "Found_Bad_word" - otherwise, let the next action pass. 
       if(action.type === ADD_ARTICLE){
 
         const foundWord = forbiddenWords.filter(word => 
