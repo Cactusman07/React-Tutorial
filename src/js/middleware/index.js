@@ -1,6 +1,6 @@
 // /src/js/middleware/index.js
 
-// setup function that prevents words from being entered into the article list. 
+// setup function that prevents certain words from being entered into the article list. 
 // Notice dispatch is the first parameter
 
 import { ADD_ARTICLE } from "../constants/action-types";
@@ -11,7 +11,7 @@ export function forbiddenWordsMiddleware({ dispatch }) {
   return function(next){
     return function(action){
 
-      // When action type = ADD_ARTICLE, check the if the payload.title contains a "bad word." If it doesn't, then dispatch
+      // When action type = ADD_ARTICLE, check if the payload.title contains a "bad word." If it doe, then dispatch
       // an action of Type "Found_Bad_word" - otherwise, let the next action pass. 
       if(action.type === ADD_ARTICLE){
 
@@ -20,6 +20,7 @@ export function forbiddenWordsMiddleware({ dispatch }) {
         );
 
         if (foundWord.length) {
+          //alert("Bad Word entered!");
           return dispatch({ type: "Found_Bad_Word" });
         }
       }

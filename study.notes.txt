@@ -72,6 +72,8 @@ So far, we have the Store which orchestrates all the interactions in Redux. We a
 
 The main point of Redux is to move the logic out of the React components. If we want to check the Action Payload before the Action is passed to the Reducer, we need to check the Application's flow and alter its behaviour. That's what Redux Middleware does. 
 
+The Payload is what is bundled in your actions and passed around between Reducers in your Redux applciation. 
+
 A Redux Middleware is a function that is able to intercept, and act accordingly, our actions, before they reach the Reducer. In it's basic form, it is a function, returning a function, which takes next as a parameter. Then the inner functions returns another function which takes Action as a parameter and finally returns next(action). 
 
 Middleware in Redux is super important. It holds the bulk of your applications logic. Inside Middleware you can access getState and dispatch. The logic can live outside of React, it becomes reusable, it can be tested, and we keep the components clean. 
@@ -90,7 +92,7 @@ Webpack is a static module bundler for JS applications. It's core concepts are
 - Loaders: Loaders enable Webpack to process different types of imported files and convert them into valid modules when it encounters a specific type of file. Loaders have two properties in the config file - test & use. Test identifies which files should be transformed, and Use indicates which loader can be used to do transforming.
 - Plugins
 
-There are four features in Typescript that don't compile in Babel due to its single-file emit archetecture
+There are four features in Typescript that don't compile in Babel due to its single-file emit architecture
 
 1. Don't use namespaces - they're outdated. Use ES6 modules (import / export) instead.
 2. Casting a type with the <newtype>x syntax: use x as newtype instead. 
