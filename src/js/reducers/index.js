@@ -4,7 +4,8 @@ import { ADD_ARTICLE } from "../constants/action-types";
 import { Found_Bad_Word } from "../constants/action-types";
 
 const initialState = {
-  articles: []
+  articles: [],
+  remoteArticles: []
 };
 
 // The below rootReducer breaks the main Redux principle - immutability. The State cannot change in place. 
@@ -26,7 +27,13 @@ function rootReducer(state = initialState, action) {
   }
 
   if(action.type === Found_Bad_Word){
-    console.log("found bad word");
+    alert("found bad word");
+  }
+
+  if(action.type === "DATA_LOADED"){
+    return Object.assign({}, state, {
+      remoteArticles: state.remoteArticles.concat(action.payload)
+    });
   }
 
   return state;
