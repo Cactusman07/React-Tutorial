@@ -1,6 +1,7 @@
 // /src/js/reducers/index.js
 
 import { ADD_ARTICLE } from "../constants/action-types";
+import { Found_Bad_Word } from "../constants/action-types";
 
 const initialState = {
   articles: []
@@ -23,6 +24,11 @@ function rootReducer(state = initialState, action) {
       articles: state.articles.concat(action.payload)
     });
   }
+
+  if(action.type === Found_Bad_Word){
+    console.log("found bad word");
+  }
+
   return state;
 };
 

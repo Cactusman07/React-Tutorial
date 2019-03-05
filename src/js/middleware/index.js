@@ -11,7 +11,7 @@ export function forbiddenWordsMiddleware({ dispatch }) {
   return function(next){
     return function(action){
 
-      // When action type = ADD_ARTICLE, check if the payload.title contains a "bad word." If it doe, then dispatch
+      // When action type = ADD_ARTICLE, check if the payload.title contains a "bad word." If it does, then dispatch
       // an action of Type "Found_Bad_word" - otherwise, let the next action pass. 
       if(action.type === ADD_ARTICLE){
 
@@ -20,7 +20,6 @@ export function forbiddenWordsMiddleware({ dispatch }) {
         );
 
         if (foundWord.length) {
-          //alert("Bad Word entered!");
           return dispatch({ type: "Found_Bad_Word" });
         }
       }

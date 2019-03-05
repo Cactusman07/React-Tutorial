@@ -48,6 +48,7 @@ class ConnectedForm extends Component {
           />
         </div>
         <button type="submit" className="btn btn-success btn-lg">SAVE</button>
+{/*         <div className="alert" id="submitAlert" style={{ 'marginTop': '20px'}}></div> */}
       </form>
     );
   }

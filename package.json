@@ -1,7 +1,7 @@
 {
   "name": "react-tutorial",
   "version": "1.0.0",
-  "description": "This project is to help learn how to set up Babel, Webpack & React from scratch, and then implement typescript and redux with a backend SQL database.",
+  "description": "This project is to help learn how to set up Babel, Webpack & React from scratch, then implement typescript and redux with a backend SQL database.",
   "main": "index.js",
   "repository": {
     "type": "git",
