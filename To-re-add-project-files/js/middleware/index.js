@@ -5,7 +5,7 @@
 
 import { ADD_ARTICLE } from "../constants/action-types";
 
-const forbiddenWords = ["spam", "Liverpool FC", "poos"];
+const forbiddenWords = ["spam", "Liverpool FC"];
 
 export function forbiddenWordsMiddleware({ dispatch }) {
   return function(next){

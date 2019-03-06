@@ -16,14 +16,18 @@
   "homepage": "https://github.com/Cactusman07/React-Tutorial#readme",
   "devDependencies": {
     "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.4",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
     "@types/react-redux": "^7.0.1",
     "@types/uuid": "^3.4.4",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "prop-types": "^15.7.2",
@@ -42,6 +46,8 @@
   "dependencies": {},
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   }
 }
