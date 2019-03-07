@@ -19,10 +19,17 @@ In plain JavaScript there is no concept of Classes and inheritence is through pr
 
 Access Modifiers are basically keywords that set the accessibility of methods and properties within classes - Public, Private and Protected. By default all members are Public.
 
+__** ES6 notes: **__
+Class Declarations are just "special functions" - it has two components: class expressions and class declarations. 
+
+Hoisting. An important difference between function declarations and class declarations is that function declarations are "hoisted" and class declarations are not. It means that you will need to declare your classes before you access them. Hoisting was thought up as a feneral way of thinking about how execution contexts work in JavaScript. 
+
 
 __** REACT **__
 Stateless / Functional React Components (Dumb components).
 These are plain Javascript funtion that takes props as arguments and returns a react element. They do not retain internal state, or have backing instances, and don't have the component lifecycle methods. They can't remember or give context to other parts of the UI.
+
+Props are creation parameters for React Componenets. I.E: When you create an image, you can use a prop named source to control what image it shows. 
 
 Class component or Stateful Components
 Components which manage / modify state. A Stateful component in React is a component carrying it's own local state. You can change the state using this.setState. Stateful components provide the necessary context glue. Plays with all life cycle methods of React.
