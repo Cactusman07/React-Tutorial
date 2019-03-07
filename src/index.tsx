@@ -3,6 +3,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from "./ts/components/App";
+//import style from 'index.scss';
 
 const rootElement = document.getElementById("app");
 
@@ -16,6 +17,7 @@ class Main extends React.Component<any, any> {
   }
 
   // The render method is where the DOM for our component is defined. Your JSX is added inside the return() statement.
+  // React expects component names to start with uppercase, and DOM elements to start with lowercase.
   public render() {
     return(
       <div>

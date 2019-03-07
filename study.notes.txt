@@ -4,6 +4,8 @@
 __** What is Typescript? **__
 Typescript = open source, typed superset of JavaScript by Microsoft. Compiles down to plain Javascript. TypeScript is just extended JavaScript. You can rename a .js file to a .ts file and it will work just fine. TypeScript adds type support to JavaScript. With TypeScript we get IDE / intellesense support also. 
 
+<> is the casting operator in typescript
+
 TypeScript, unlike traditional JavaScript, encourages let & const declarations. JavaScript only has global scope and function scope, there is no block level scope. Let & Const declarations support block level scoping, and you can't re-declare a variable multiple times. Const variables must be initialized, where as Let can just be declared. Let variables often change, where Const varialbes are consistent and don't change. 
 You can also utilize the 'any' type to assign different variable types (if you're unsure of what type value to use). Any encompasses any type value in TypeScript and doesn't throw any errors on any value declaration. 
 Type Unknown is similar to the Any type, except that when it gets declared, you need to use type assertion to treat it as a certain type, before applying methods to it.
@@ -13,7 +15,7 @@ You can declare multi types, using the | character. This is different from the A
 
 In TypeScript you can assign Types as function parameters. You can have Optional parameters, or Default parameters. You can make parameters optional by using the ? character after the parameter. You can have any number of Optional parameters, but they must be declared after the required parameters. Default parameters just have a set value as a parameter. 
 
-It is possible to specify an object as a Type in TypeScript. We can create interfaces to use as a type, also with optional properties.
+It is possible to specify an object as a Type in TypeScript. We can create interfaces to use as a type, also with optional properties. An interface is a way to declare a contract for the shape of a type, with 'shape' in this sense being a collection of methods and properties along with their associated types. Creating an object of the type defined by the interface it is expected that the object has the same 'shape' - or you'll get a TypeScript error (or 700).
 
 In plain JavaScript there is no concept of Classes and inheritence is through prototypical inheritance. TypeScript, just like ES6, supports Classes to build object orientated class based approach. You can create new instances of instansiated classes, like you can in C#. You can also now have class based inheritance. Use the extends keyword to extend from another class, and then use the super keyword to utilize that extended classes properties. 
 
@@ -27,7 +29,7 @@ Hoisting. An important difference between function declarations and class declar
 
 __** REACT **__
 Stateless / Functional React Components (Dumb components).
-These are plain Javascript funtion that takes props as arguments and returns a react element. They do not retain internal state, or have backing instances, and don't have the component lifecycle methods. They can't remember or give context to other parts of the UI.
+These are plain Javascript funtion that takes props as arguments and returns a react element. They do not retain internal state, or have backing instances, and don't have the component lifecycle methods. They can't remember or give context to other parts of the UI. When possible, stateless components are preferred.
 
 Props are creation parameters for React Componenets. I.E: When you create an image, you can use a prop named source to control what image it shows. 
 
@@ -38,6 +40,18 @@ Container / Presentational principle
 This is a pattern for React components. The container component is the one that carries all the logic: functions for holding state changes, internal component state, etc. 
 
 In contrast a presentational component is merely used for displaying the intended markup. These are plain JS functions, recieving data from the container component as props. 
+
+React expects components to start with uppercase and DOM elements to start with lowercase.
+
+The parent component is usually in control of changing the value of props passed into child elements.
+
+In JavaScript, the keyword 'this' is bound to a function, as opposed to strongly-typed languages such as C#. In C# 'this' is bound to an object instance, whereas in JavaScript it's bound to the function in which it is called in. 
+
+Unidirectional Data Flow (UDF):
+	event -> event handler -> state -> render
+Components are representations of the state of a view over time. As events are triggered over time, they update state and re-render the component with the new state. The flow can be seen as a stream of events that have unidirectional data flow, and eventually cause a component to re-render. 
+The actual composition of the components occurs in the render method.
+
 
 Even when using Redux, it's totally fine to have Stateful Components. Not every piece of an application's state should go inside Redux.
 

@@ -1,15 +1,32 @@
+// src/ts/components/App.tsx
+
 import * as React from "react";
-import * as ReactDom from "react-dom";
+import * as ReactDOM from "react-dom";
 
-import List from "./dumb/List/List";
+// Component Imports
+import NameChange from "./dumb/NameChange/NameChange";
 
-const App = () => (
-  <div className="row mt-5">
-      <div className="col-md-4 offset-md-1">
-      <h2>Articles</h2>
-        <List />
+class App extends React.Component<any, any>{
+  constructor(props: any){
+    super(props);
+  }
+
+  public render() {
+    return(
+      <div>
+        <div className="row mt-5">
+          <div className="col-md-12 offset-md-1">
+            <NameChange defaultName="Sam" />
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-md-4 offset-md-1">
+            <h2>Articles</h2>  
+          </div>
+        </div>
       </div>
-  </div>
-);
+    );
+  }
+}
 
 export default App;
