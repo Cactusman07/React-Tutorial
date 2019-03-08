@@ -1,0 +1,21 @@
+/* index.scss */
+
+$color-primary: #fdb13f;
+$font-primary:  #474747;
+$background: #cfffff;
+$white: #fff;
+
+body{
+  background-color: $background;
+  color: $font-primary;
+}
+
+header{
+  background-color: $color-primary;
+  padding: 20px 0;
+  border-bottom: 8px solid $font-primary;
+} 
+
+.app-container{
+  margin-top:30px;
+}

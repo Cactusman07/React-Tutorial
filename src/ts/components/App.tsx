@@ -6,6 +6,9 @@ import * as ReactDOM from "react-dom";
 // Component Imports
 import NameChange from "./dumb/NameChange/NameChange";
 
+// Styles
+import '../../styles/index.scss';
+
 class App extends React.Component<any, any>{
   constructor(props: any){
     super(props);

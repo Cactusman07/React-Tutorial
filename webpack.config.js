@@ -9,8 +9,8 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".jsx"]
+    // Add all resolvable extensions.
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"]
   },
   // Enable sourcemaps for debugging webpack's output.
   devtool: 'source-map',
@@ -32,12 +32,22 @@ module.exports = {
         ]
       },
       {
-        test: /\.scss$/,
-        loaders: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+        test: /\.(scss|css)$/,
+        use: [
+          "style-loader",
+          "css-loader?sourceMap",
+          "sass-loader?sourceMap"
         ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif|eot|ttf|woff|woff2)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            publicPath: 'assets',
+            name: '[path][name].[ext]',
+          },
+        }
       }
     ]
   },
@@ -48,7 +58,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    })    
+    })
   ],
   // When importing a module whose path matches one of the following, just
   // assume a corresponding global variable exists and use that instead.
