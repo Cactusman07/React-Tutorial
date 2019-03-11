@@ -4,6 +4,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from "./ts/components/App";
 
+// Styles
+import './styles/index.scss';
+
 const rootElement = document.getElementById("app");
 
 // React.Component<any, any> is a part of the TypeScript typing definition for React. 

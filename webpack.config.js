@@ -1,8 +1,22 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-module.exports = {
+module.exports = (env, argv) => { 
+  let isProd = false;
+  console.log(argv.mode); 
+  if (argv.mode !== 'production') {
+    console.log('We are outputing code in development mode! Non-minified.');
+  } 
+  if (argv.mode == 'production') {
+    isProd = true;
+    console.log('We are building code for production! Minified & ready to deploy.');
+  }
+
+  return{
   entry: "./src/index",
   output: {
     filename: "app.bundle.js",
@@ -14,6 +28,17 @@ module.exports = {
   },
   // Enable sourcemaps for debugging webpack's output.
   devtool: 'source-map',
+  optimization: {
+    minimize: isProd,
+		minimizer: argv.mode === 'production' ? [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ] : []
+  },
   module: {
     rules: [
       {
@@ -32,11 +57,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(scss|css)$/,
-        use: [
+        test: /\.scss$/,
+        use:  [  
           "style-loader",
-          "css-loader?sourceMap",
-          "sass-loader?sourceMap"
+          MiniCssExtractPlugin.loader,
+          "css-loader?sourceMap", // translates CSS into CommonJS
+          "sass-loader?sourceMap" // compiles Sass to CSS
         ]
       },
       {
@@ -58,6 +84,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "styles.css",
+      chunkFilename: "[name].css"
     })
   ],
   // When importing a module whose path matches one of the following, just
@@ -68,4 +100,5 @@ module.exports = {
       "react": "React",
       "react-dom": "ReactDOM"
   }
+}
 };

@@ -149,11 +149,3 @@ __** Babel **__
 Babel is a toolchain that is mainly used to compile ECMAScript2015+ to a backwards compatible version of JavaScript in current and older browsers or environment. Babel can convert jsx to js
 
 
-
-
-ToDo: 
-- Finish react tutorials
-- complete back end, with SQL database integration
-- convert to typescript
-- implement redux
-
