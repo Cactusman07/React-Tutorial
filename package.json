@@ -58,6 +58,6 @@
     "build:dev": "webpack --mode development",
     "test": "echo \"Error: no tests installed\" && exit 1",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "npm run type-check --watch"
   }
 }

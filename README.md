@@ -6,6 +6,10 @@ Redux was also implemented following this tutorial: https://www.valentinog.com/b
 
 To learn TypeScript, I used this video tutorial series, taking notes and then tried implementing what I had learned in the previous two tutorials and re-writing the code in TypeScript: https://www.youtube.com/watch?v=WBPrJSw7yQA 
 
+These are also two good tutorials that I found helpful with TypeScript: 
+https://basarat.gitbooks.io/typescript/content/ 
+https://medium.freecodecamp.org/how-to-set-up-a-typescript-project-67b427114884
+
 If you are interested, you can read the notes that I took on these, and on further subjects, by viewing the study.notes.txt file in the repository.
 
 ## Currently implementations and technologies used:
@@ -20,7 +24,7 @@ If you are interested, you can read the notes that I took on these, and on furth
 ## Next steps: 
 - Create backend API / web service that reads, writes, and deletes records from an SQL database. 
 - Finish React Tutorials
-- Look into imtegrating Jest
+- Look into integrating Jest
 - Implement Linting (ESLint & Prettier)
 - Profile.Backend folder also contains a VS 2017 ASP.NET project, which (will eventually) utilize XUnit Testing, Swagger, API implementation, and SQL Database integration. 
 
@@ -34,7 +38,6 @@ Runs the app in the development mode.<br>
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
 ### `npm test`
 
@@ -49,3 +52,9 @@ The solution compiles .scss files into one style.css file, compiles all typescri
 
 ### `npm run build:dev`
 Much like npm run build, but it builds the app with unminified code.<br>
+
+### `npm run type-check`
+Runs tsc --noEmit, which checks the code, but doesn't produce output. 
+
+
+Please check the scripts section of the package.json file for more scripts that can be run.
