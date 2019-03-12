@@ -28,6 +28,9 @@ Hoisting. An important difference between function declarations and class declar
 
 
 __** REACT **__
+
+Components are like JavaScript functions. They accept inputs (called 'props') and then return React elements, describing what should appear on screen. You can use classes (ES6) which have some addition features. Component names always start with a capital letter.
+
 Stateless / Functional React Components (Dumb components).
 These are plain Javascript funtion that takes props as arguments and returns a react element. They do not retain internal state, or have backing instances, and don't have the component lifecycle methods. They can't remember or give context to other parts of the UI. When possible, stateless components are preferred.
 
@@ -47,11 +50,12 @@ The parent component is usually in control of changing the value of props passed
 
 In JavaScript, the keyword 'this' is bound to a function, as opposed to strongly-typed languages such as C#. In C# 'this' is bound to an object instance, whereas in JavaScript it's bound to the function in which it is called in. 
 
+In html forms, an input form element whose value is controlled by React (in the state property of the component, and updated with setState() ), is called a "Controlled component"
+
 Unidirectional Data Flow (UDF):
 	event -> event handler -> state -> render
 Components are representations of the state of a view over time. As events are triggered over time, they update state and re-render the component with the new state. The flow can be seen as a stream of events that have unidirectional data flow, and eventually cause a component to re-render. 
 The actual composition of the components occurs in the render method.
-
 
 Even when using Redux, it's totally fine to have Stateful Components. Not every piece of an application's state should go inside Redux.
 

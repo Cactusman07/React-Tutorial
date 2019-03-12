@@ -1,42 +1,46 @@
 import * as React from 'react';
 
-interface CardProps {
-  Name: string,
-  Url: string, 
-  Company: string,
-  UserName: string
+interface GithubProfileCardProps{ 
+  login: string; 
+  avatar_url: string | undefined; 
+  name: string; 
+  company: string;
+  id: number;
 }
 
-interface CardState {
-  Name: "",
-  Url: "",
-  Company: "",
-  UserName: ""
-}
+const GithubProfileCard = (props: GithubProfileCardProps) => {
+  let avatarUrl = props.avatar_url;
 
-export default class GithubProfileCard extends React.Component<CardProps, CardState>{
-  constructor(props: CardProps){
-    super(props);
+  if (avatarUrl == undefined){
+    avatarUrl = "public/default-user-icon.jpg"
   }
 
-  public render() {
-    return(
-      <div className="ghCard col-xs-1 col-sm-6 col-md-4 col-lg-3">
-        <div className="ghProfileWrapper">
-          <div className="ghUserName">
-            <p>{this.props.UserName}</p>
-          </div>
-          <div className="ghProfile">
-            <img alt="" src={this.props.Url}></img>
-          </div>
-          <div className="ghUser">
-            <h3>{this.props.Name}</h3>
-          </div>
-          <div className="ghCompany">
-            <p>{this.props.Company}</p>
-          </div>
+  return(
+    <div className="ghCard col-xs-1 col-sm-6 col-md-4 col-lg-3">
+      <div className="ghProfileWrapper">
+        <div className="ghUserName">
+          <p>{props.login}</p>
+        </div>
+        <div className="ghProfile">
+          <img alt="" src={avatarUrl}></img>
+        </div>
+        <div className="ghUser">
+          <h3>{props.name}</h3>
+        </div>
+        <div className="ghCompany">
+          <p>{props.company}</p>
         </div>
       </div>
-    )
-  };
+    </div>
+  )
 }
+
+const CardList = (props: { cards: { map: (arg0: (card: any) => JSX.Element) => React.ReactNode; }; }) => {
+    return(
+      <div className="row">
+        {props.cards.map((card: { id: any; }) => <GithubProfileCard key={card.id} {...card} />)}
+      </div>
+    )
+}
+
+export default CardList;

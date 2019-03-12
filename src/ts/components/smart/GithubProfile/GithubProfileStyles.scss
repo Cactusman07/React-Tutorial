@@ -2,6 +2,7 @@
 @import "./src/styles/colors.scss";
 
 .ghCard{
+  margin-bottom:25px;
   padding: 0 15px;
   text-align: center;
   .ghProfileWrapper{
@@ -10,6 +11,11 @@
     border: 2px solid $color-primary;
     box-shadow: 5px 5px 12px $font-primary;
     text-shadow: 2px 2px 5px $font-secondary;
+    padding: 0 10px;
+    min-height: 340px;
+  }
+  .ghUser{
+    min-height: 66px;
   }
   .ghUserName{
     font-weight: 800;
