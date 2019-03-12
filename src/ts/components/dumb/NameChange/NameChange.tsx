@@ -23,9 +23,13 @@ export default class NameChange extends React.Component<NameChangeProps, any> {
       const introText = (document.getElementById("intro") as HTMLParagraphElement);
       const updateButton = (document.getElementById("update") as HTMLButtonElement);
       const nameInput = (document.getElementById("nameInput") as HTMLInputElement);
-      introText.remove();
+      const continueText = (document.getElementById("continue") as HTMLParagraphElement);
+      const nameShown = (document.getElementById("nameShown") as HTMLParagraphElement);
       updateButton.remove();
       nameInput.remove();
+      introText.remove();
+      nameShown.className = "";
+      continueText.className = "";
     }
   }
 
@@ -34,7 +38,8 @@ export default class NameChange extends React.Component<NameChangeProps, any> {
     return (
       <div>
         <p id="nameShown" className="hidden">Hi, {this.state.name}!</p>
-        <p id="intro">Enter your name below, and let's continue.</p> 
+        <p id="intro">Enter your name below, and let's continue.</p>
+        <p id="continue" className="hidden">Awesome, let's continue.</p>
         <input 
           type="text"
           id="nameInput"

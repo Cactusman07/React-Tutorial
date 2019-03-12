@@ -4,7 +4,7 @@
 __** What is Typescript? **__
 Typescript = open source, typed superset of JavaScript by Microsoft. Compiles down to plain Javascript. TypeScript is just extended JavaScript. You can rename a .js file to a .ts file and it will work just fine. TypeScript adds type support to JavaScript. With TypeScript we get IDE / intellesense support also. 
 
-<> is the casting operator in typescript
+<> is the casting operator in typescript.
 
 TypeScript, unlike traditional JavaScript, encourages let & const declarations. JavaScript only has global scope and function scope, there is no block level scope. Let & Const declarations support block level scoping, and you can't re-declare a variable multiple times. Const variables must be initialized, where as Let can just be declared. Let variables often change, where Const varialbes are consistent and don't change. 
 You can also utilize the 'any' type to assign different variable types (if you're unsure of what type value to use). Any encompasses any type value in TypeScript and doesn't throw any errors on any value declaration. 

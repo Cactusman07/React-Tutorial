@@ -1,9 +1,24 @@
 import * as React from "react";
+import './Counter.scss';
 
-export default class Counter extends React.Component{
+interface CounterProps{}
+interface CounterState{
+  count: number;
+}
+
+export default class Counter extends React.Component<CounterProps, CounterState>{
+  constructor(props: CounterProps){
+    super(props);
+  }
   state = {
     count: 0
   };
+
+  // We could also define defaultProps by adding a count: number type to the 
+  // CounterProps interface, which would then allow us to use:
+  // static defaultProps: Props = { count: 10 }; 
+  // which would set the default count number to use. The count would then be 
+  // called from this.props.count instead of this.state.count
 
   increment = () => {
     this.setState({
@@ -19,8 +34,10 @@ export default class Counter extends React.Component{
 
   render() {
     return(
-      <div>
+      <div className="counterButtons">
         <h5>Simple Counter: {this.state.count}</h5>
+        <button onClick={this.decrement}>Decrement</button>
+        <button onClick={this.increment}>Increment</button>
       </div>
     );
   }

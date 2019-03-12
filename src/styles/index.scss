@@ -1,10 +1,6 @@
 /* index.scss */
 
-$color-primary: #fdb13f;
-$font-primary:  #474747;
-$font-secondary: #caa8a8;
-$background: #cfffff;
-$white: #fff;
+@import "./colors.scss";
 
 body{
   background-color: $background;
@@ -29,4 +25,8 @@ span{
 
 .app-container{
   margin-top:30px;
+}
+
+.hidden{
+  display: none;
 }

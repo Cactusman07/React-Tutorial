@@ -10,6 +10,8 @@ These are also two good tutorials that I found helpful with TypeScript:
 https://basarat.gitbooks.io/typescript/content/ 
 https://medium.freecodecamp.org/how-to-set-up-a-typescript-project-67b427114884
 
+The documentation on SCSS is quite good (much better than typescript) - so I've been referring to it when needed: (https://sass-lang.com/guide)
+
 If you are interested, you can read the notes that I took on these, and on further subjects, by viewing the study.notes.txt file in the repository.
 
 ## Currently implementations and technologies used:

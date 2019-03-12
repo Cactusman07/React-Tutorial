@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 // Component Imports
 import NameChange from "./dumb/NameChange/NameChange";
 import Counter from "./dumb/Counter/Counter";
-/* import Result from "./dumb/Counter/Result"; */
+import GithubProfiles from "./smart/GithubProfile/GithubProfiles";
 
 class App extends React.Component<any, any>{
   constructor(props: any){
@@ -20,16 +20,13 @@ class App extends React.Component<any, any>{
           <div className="col-md-12">
             <NameChange defaultName="User" />
           </div>
-          <div className="col-md-12">
+          <div className="col-md-10 offset-md-1">
             <br />
             <Counter />
-
           </div>
         </div>
-        <div className="row mt-5">
-          <div className="col-md-4 offset-md-1">
-            <h2>Articles</h2>  
-          </div>
+        <div>
+          <GithubProfiles />
         </div>
       </div>
     );
