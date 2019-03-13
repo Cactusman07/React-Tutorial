@@ -17,6 +17,13 @@ export default class GHForm extends React.Component<any,any>{
         this.props.onSubmit(resp.data);
         console.log(resp.data);
         this.setState({userName: ''});
+        const successPopup = (document.getElementById('success') as HTMLDivElement);
+        successPopup.className="";
+        setTimeout(
+          function(){
+            successPopup.className="hidden";
+          }, 1000
+        );
       })
     }
   };
@@ -34,6 +41,9 @@ export default class GHForm extends React.Component<any,any>{
               </input>
             </label>
             <button type="submit">Add user info</button>
+            <div id="success" className="hidden">
+              <img src="public/borat-great-success.gif"></img>
+            </div>
           </form>
           <br />
         </div>

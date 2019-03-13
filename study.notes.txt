@@ -21,6 +21,10 @@ In plain JavaScript there is no concept of Classes and inheritence is through pr
 
 Access Modifiers are basically keywords that set the accessibility of methods and properties within classes - Public, Private and Protected. By default all members are Public.
 
+Using TypeScript with Redux provides the following benefits for your application:
+- Type safety for reducers, state and action creators
+- Easy refactoring of typed code
+
 __** ES6 notes: **__
 Class Declarations are just "special functions" - it has two components: class expressions and class declarations. 
 

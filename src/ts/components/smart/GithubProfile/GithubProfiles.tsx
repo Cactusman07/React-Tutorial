@@ -7,23 +7,17 @@ import "./GithubProfileStyles.scss";
 export default class GithubProfiles extends React.Component<any, any>{
 state = {
     cards: [
-      { login: "Cactusman07",
-        name:"Sam Muir",
-        avatar_url:"https://avatars2.githubusercontent.com/u/5124543?v=4",
-        company:"Tower Insurance",
-        key: 1
-      },
       { login: "Jlord",
         name:"Jessica Lord",
         avatar_url:"https://avatars3.githubusercontent.com/u/1305617?v=4",
         company:"Glitch",
-        key: 2
+        key: 1
       },
       { login: "VincentGarreau",
         name:"Vincent Garreau",
         avatar_url:"https://avatars3.githubusercontent.com/u/961898?v=4",
         company:"Livestorm",
-        key: 3
+        key: 2
       }
     ]
   }

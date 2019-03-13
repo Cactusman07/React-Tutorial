@@ -5,7 +5,6 @@ interface GithubProfileCardProps{
   avatar_url: string | undefined; 
   name: string; 
   company: string;
-  id: number;
 }
 
 const GithubProfileCard = (props: GithubProfileCardProps) => {
@@ -38,7 +37,7 @@ const GithubProfileCard = (props: GithubProfileCardProps) => {
 const CardList = (props: { cards: { map: (arg0: (card: any) => JSX.Element) => React.ReactNode; }; }) => {
     return(
       <div className="row">
-        {props.cards.map((card: { id: any; }) => <GithubProfileCard key={card.id} {...card} />)}
+        {props.cards.map((card) => <GithubProfileCard key={card.id} {...card} />)}
       </div>
     )
 }
