@@ -22,7 +22,7 @@ export default class GHForm extends React.Component<any,any>{
         setTimeout(
           function(){
             successPopup.className="hidden";
-          }, 1000
+          }, 600
         );
       })
     }

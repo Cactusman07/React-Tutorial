@@ -3,6 +3,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from "./ts/components/App";
+import { Provider } from "react-redux";
+import store from "./ts/store/store";
+import * as serviceWorker from './ts/serviceWorker';
 
 // Styles
 import './styles/index.scss';
@@ -23,7 +26,9 @@ class Main extends React.Component<any, any> {
   public render() {
     return(
       <div>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </div>
     )
   }
@@ -31,3 +36,7 @@ class Main extends React.Component<any, any> {
 
 // Passes Main component to the defined Root Element variable that we output the component to.
 ReactDOM.render(<Main />, rootElement);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+serviceWorker.unregister();

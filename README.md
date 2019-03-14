@@ -3,6 +3,7 @@ This project was started from scratch, following this tutorial: https://www.vale
 React was then implemented using Webpack & Babel: https://www.valentinog.com/blog/react-webpack-babel/
 
 Redux was also implemented following this tutorial: https://www.valentinog.com/blog/redux/ 
+Also, this article has a good explanation of the Redux Store Architechture: https://medium.com/swinginc/react-redux-typescript-into-the-better-frontend-tutorial-d32f46e97995
 
 To learn TypeScript, I used this video tutorial series, taking notes and then tried implementing what I had learned in the previous two tutorials and re-writing the code in TypeScript: https://www.youtube.com/watch?v=WBPrJSw7yQA 
 

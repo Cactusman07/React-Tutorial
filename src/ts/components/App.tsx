@@ -1,7 +1,6 @@
 // src/ts/components/App.tsx
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 // Component Imports
 import NameChange from "./dumb/NameChange/NameChange";
@@ -17,13 +16,14 @@ class App extends React.Component<any, any>{
     return(
       <div>
         <div className="row mt-5">
-          <div className="col-md-12">
+          <div className="col-md-8">
             <NameChange defaultName="User" />
+            <br />
           </div>
-          <div className="col-md-10 offset-md-1">
+          {/* <div className="col-md-4">
             <br />
             <Counter />
-          </div>
+          </div> */}
         </div>
         <div>
           <GithubProfiles />

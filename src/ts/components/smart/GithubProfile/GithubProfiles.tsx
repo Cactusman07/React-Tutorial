@@ -28,7 +28,6 @@ state = {
     }));
   }
 
-
   public render() {
     return(
       <div className="ghCardSection">

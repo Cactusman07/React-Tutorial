@@ -30,6 +30,17 @@ Class Declarations are just "special functions" - it has two components: class e
 
 Hoisting. An important difference between function declarations and class declarations is that function declarations are "hoisted" and class declarations are not. It means that you will need to declare your classes before you access them. Hoisting was thought up as a feneral way of thinking about how execution contexts work in JavaScript. 
 
+Promises and Callbacks
+Code that makes use of asynchronous callbacks or promises often contains a great deal of function & return statement keywords. When using promises, these function expressions will be used for chaining - in ES6 you can do that as follows: 
+
+aAsync().then(
+	() => bAsync()).then(
+	() => cAsync()).done(
+	() => finish
+);
+
+You can see how arrow functions make use of the .then & .done keywords to help the chaining process. It reduces the use of the 'this' keyword, as Arrow Functions allow you to retain the scope of the caller inside the function. You don't need to use the .bind() method, or create a closure using var self = this;
+
 
 __** REACT **__
 
@@ -71,9 +82,13 @@ Redux stores state in it's 'Store' - the Redux store is fundamental: the state o
 
 The state in Redux comes from reducers. Reducers produce the state of the application. The state must be return entirely from reducers. The state lives as a single object within the Store. 
 
-A Reducer is a JavaScript function that takes two parameters: the current state, and an action. A Reducer must be pure (a pure function is one that returns the exact same output for the given input). A Reducer is the most important concept in Redux, as Reducers produce the state of the applciation. The second principle of Redux says the only way to change the state is by sending a signal to the store. This signal is an "Action" - Dispatching an Action is the process of sending out a signal. The Reducer calculates the next State depending on the Action Type. It should return at least the initial State when no Action Type matches. When it does match, the Reducer calculates the next State and returns a new object. Reducers will grow as your app will become bigger - you can split a big reducer into separate functions and combine them with combineReducers.
+Redux Actions are plain JavaScript objects. Each Action needs a Type Property for describing how the state should change. It is best practice to wrap every action within a function. Such a function is called an Action Creator (a function that creates actions). 
 
-Redux Actions are nothing mroe than JavaScript objects. Each Action needs a Type Property for describing how the state should change. It is best practice to wrap every action within a function. Such function is called an Action Creator. The Type Property is nothing more than a string, so the reducer will use that string to determine how to calculate the next state. Therefore, it's better to have Action Types declared as constants to avoid difficult to debug errors. As soon as the Store receives an actionot triggers a Reducer, which returns the next State.
+Actions must have a Type Property to indicate the type of action being performed. Types should typically be defined as string constants, and they are used to calculate the next state. Therefore, it's better to have Action Types declared as constants to avoid difficult to debug errors. As soon as the Store receives an action it triggers a Reducer, which returns the next State.
+
+Reducers specify how the application's state changes in response to Actions sent to the store. Actions describe what happened, but not how the state changes. 
+
+A Reducer is a JavaScript function that takes two parameters: the current state, and an action. A Reducer must be pure (a pure function is one that returns the exact same output for the given input). A Reducer is the most important concept in Redux, as Reducers produce the state of the applciation. The second principle of Redux says the only way to change the state is by sending a signal to the store. This signal is an "Action" - Dispatching an Action is the process of sending out a signal. The Reducer calculates the next State depending on the Action Type. It should return at least the initial State when no Action Type matches. When it does match, the Reducer calculates the next State and returns a new object. Reducers will grow as your app will become bigger - you can split a big reducer into separate functions and combine them with combineReducers.
 
 There are two key points for avoiding mutation in Redux - using concat(), slice(), and ...spread for arrays. And using Object.assign() and ...spread for objects. 
 
@@ -95,6 +110,16 @@ Install react-redux (npm i react-redux --save-dev) and the relative @type, as it
 Provider is a high order component coming from the React-Redux library. It wraps up your application and makes it aware of the entire Redux's store. In Redux the Store manages everything, and React must talk to the Store for accessing the State and dispatching Actions. 
 
 The key for connecting a React component with Redux is 'Connect' - this takes at least one argument (the first argument for connect must be null when mapStateToProps is absent, otherwise you'll get a TypeError: dispatch is not a function). Always remember the State in Redux comes from Reducers. Get into a habit of validating PropTypes with TypeScript. 
+
+A dispatching function (or simply dispatch function) is a function that accepts an action or an async action; it then may or may not dispatch one or more actions to the store. We must distinguish between dispatching functions in general and the base dispatch function provided by the store instance without any middleware. The base dispatch function always synchronously sends an action to the store's reducer, along with the previous state returned by the store, to calculate a new state. It expects actions to be plain objects ready to be consumed by the reducer. Middleware wraps the base dispatch function. It allows the dispatch function to handle async actions in addition to actions. Middleware may transform, delay, ignore, or otherwise interpret actions or async actions before passing them to the next middleware.
+
+The Data lifecycle in any Redux app follows these four steps: 
+1. Call store.dispatch(action) - which can be called from anywhere in your app. The actions describes what happened. 
+2. The Redux store calls the reducer function you gave it. The store will pass two arguments to the reducer - the current state and the action. The reducer is a pure function. 
+3. The root Reducer may combine the output of multiple reducers into a single state tree, using combineReducers()
+4. The Redux store saves the complete state tree returned by the root reducer.
+
+Store -- (defines --> UI -- (dispatches) --> Actions --(sent to) --> Reducers -- (update) --> Store
 
 Redux Middleware. 
 So far, we have the Store which orchestrates all the interactions in Redux. We also have the Reducer which is a producer (Reducers make the State in Redux). There are Actions, which are plain JS objects with a property named type. We also have Action Creaters which are plain JS functions that return Redux Actions. The State is immutable and can change, only in response to Actions. 
@@ -156,4 +181,5 @@ There are four features in Typescript that don't compile in Babel due to its sin
 __** Babel **__
 Babel is a toolchain that is mainly used to compile ECMAScript2015+ to a backwards compatible version of JavaScript in current and older browsers or environment. Babel can convert jsx to js
 
-
+__** Service Workers **__
+A Service Worker is basically a JS Script that runs in the background and assists in offline first web application development. It can't directly interact with the webpage nor it can directly access the DOM as it runs on a different thread, but it can communicate with webpages through messages (Post Messages). They've been designed to be fully asynchronous, as a consequence. They use Promises intensively. 
