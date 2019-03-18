@@ -19,7 +19,8 @@ const initialState = {
       company:"Livestorm",
       key: 2
     }
-  ]
+  ],
+  count: 0
 };
 
 // In the below rootReducer, the initial State is left untouched. 

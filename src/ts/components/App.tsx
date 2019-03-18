@@ -20,10 +20,10 @@ class App extends React.Component<any, any>{
             <NameChange defaultName="User" />
             <br />
           </div>
-          {/* <div className="col-md-4">
+          <div className="col-md-4">
             <br />
             <Counter />
-          </div> */}
+          </div>
         </div>
         <div>
           <GithubProfiles />
