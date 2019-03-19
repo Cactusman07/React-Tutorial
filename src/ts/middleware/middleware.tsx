@@ -1,6 +1,6 @@
 // /src/ts/middleware/middleware.tsx
 
-import { ADD_PROFILE } from "../actions/actions";
+import { ADD_PROFILE } from "../actions/actionConstants";
 
 const forbiddenWords = ["spam", "Liverpool", "Liverpool FC"];
 

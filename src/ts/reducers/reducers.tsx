@@ -3,7 +3,7 @@
 import { 
   ADD_PROFILE, 
   FOUND_BAD_WORD 
-} from "../actions/actions";
+} from "../actions/actionConstants";
 
 const initialState = {
   profiles: [

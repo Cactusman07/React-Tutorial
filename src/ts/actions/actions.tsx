@@ -1,6 +1,6 @@
 // /src/ts/actions/actions.tsx
 
-import { ADD_PROFILE } from "./actionTypes";
+import { ADD_PROFILE } from "./actionConstants";
 
 // Dispatchs a plain action
 export const addProfile = (payload: any) => {

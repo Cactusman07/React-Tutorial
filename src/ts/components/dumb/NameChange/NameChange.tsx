@@ -1,7 +1,6 @@
 // src/ts/components/dumb/Name/NameChange.tsx
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 interface NameChangeProps {
   defaultName: string;
