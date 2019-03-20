@@ -49,7 +49,24 @@ Components are like JavaScript functions. They accept inputs (called 'props') an
 Stateless / Functional React Components (Dumb components).
 These are plain Javascript funtion that takes props as arguments and returns a react element. They do not retain internal state, or have backing instances, and don't have the component lifecycle methods. They can't remember or give context to other parts of the UI. When possible, stateless components are preferred.
 
-Props are creation parameters for React Componenets. I.E: When you create an image, you can use a prop named source to control what image it shows. 
+Props (properties) are creation parameters for React Componenets. I.E: When you create an image, you can use a prop named source to control what image it shows. Props are variables passed to it by it's parent component. State on the other hand is still variables, but directly initialized and managed by the component.
+
+The State of one component, will often become the Props of a child component. Props are passed to the child within the render method of the parent as the second arfument to React.createElement(), or if you're using JSX, the more familiar tag attributes: <Child name={this.state.childName} />
+
+The Parents State value of childName becomes the child's this.props.name. From the Child's perspective, the name prop is immutable. If it needs to be changed, then the parent should just change it's internal State: this.setState({ childName: 'New Name' }); and then React will propagate it to the child for you. 
+
+Ideally, Children should be stateless, but that's not always possible (look at Forms in React documentation). 
+
+Props
+- are immutable, which lets React do fast reference checks
+- are used to pass data down from your view-controller (your top level component)
+- have better performance (use this to pass data to child components)
+
+State
+- should be managed in your view-controller (your top level component)
+- is mutable
+- has worse performance
+- should not be accessed from child components (pass it down with props instead)
 
 Class component or Stateful Components
 Components which manage / modify state. A Stateful component in React is a component carrying it's own local state. You can change the state using this.setState. Stateful components provide the necessary context glue. Plays with all life cycle methods of React.

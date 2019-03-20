@@ -5,6 +5,7 @@ import {
   FOUND_BAD_WORD 
 } from "../actions/actionConstants";
 
+// Initial State of application
 const initialState = {
   profiles: [
     { login: "Jlord",
@@ -20,7 +21,8 @@ const initialState = {
       key: 2
     }
   ],
-  count: 0
+  count: 0,
+  name: ""
 };
 
 // In the below rootReducer, the initial State is left untouched. 
