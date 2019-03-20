@@ -93,9 +93,11 @@ Even when using Redux, it's totally fine to have Stateful Components. Not every 
 
 
 __ ** REDUX ** __
-Redux is a state management library. It offers a lot of convenience for a JavaScript developer - debugging, action replaying, etc. Redux is not often useful for smaller apps, but it shines in bigger applciations. 
+Redux is a state management library. It offers a lot of convenience for a JavaScript developer - debugging, action replaying, etc. Redux is not often useful for smaller apps, but it shines in bigger applciations. The word "Redux" comes from combining the two words "Reducer" and "Flux".
 
-Redux stores state in it's 'Store' - the Redux store is fundamental: the state of the whole application lives inside the store. It orchestrates all the moving parts of Redux. 
+Redux stores state in it's 'Store' - the Redux store is fundamental: the state of the whole application lives inside the store. It orchestrates all the moving parts of Redux. The State is a singleton. When State in a store is changed, the View can act on this by subscribing to the Store.
+
+View --> Action --> Reducer(s) --> Store --> View.
 
 The state in Redux comes from reducers. Reducers produce the state of the application. The state must be return entirely from reducers. The state lives as a single object within the Store. 
 
