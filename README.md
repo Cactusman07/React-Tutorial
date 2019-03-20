@@ -5,7 +5,7 @@ React was then implemented using Webpack & Babel: https://www.valentinog.com/blo
 Redux was also implemented following this tutorial: https://www.valentinog.com/blog/redux/ 
 
 Also, this article has a good explanation of the Redux Store Architechture. See the image below: 
-
+<img src="https://raw.githubusercontent.com/Cactusman07/React-Tutorial/master/public/1_9B6AihnjsE2X1KofstLCXg.png">
 Credit: https://medium.com/swinginc/react-redux-typescript-into-the-better-frontend-tutorial-d32f46e97995
 
 This article has another set of good tutorials on React, Redux, with follow up tutorials on implementing Typescript, Webpack, React Router, Firebase tutorial and GraphQL. Highly recommended.
