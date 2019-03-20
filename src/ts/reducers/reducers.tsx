@@ -2,7 +2,7 @@
 
 import { 
   ADD_PROFILE, 
-  FOUND_BAD_WORD 
+  FOUND_BAD_WORD
 } from "../actions/actionConstants";
 
 // Initial State of application
@@ -21,7 +21,7 @@ const initialState = {
       key: 2
     }
   ],
-  count: 0,
+  value: 0,
   name: ""
 };
 
@@ -29,7 +29,12 @@ const initialState = {
 // Object.assign is part of ES6 and not supported by older browsers.
 
 const rootReducer = (state: any = initialState, action: any) => {
+  if (typeof state === 'undefined') {
+    return state;
+  }
+
   switch (action.type){
+
     case ADD_PROFILE:
       return Object.assign({}, state, {
         profiles: state.profiles.concat(action.payload)
@@ -37,6 +42,16 @@ const rootReducer = (state: any = initialState, action: any) => {
 
     case FOUND_BAD_WORD:
       return alert("Sorry, that type of bad language is not allowed here!");
+
+    case 'INCREMENT':
+      return Object.assign({}, state, {
+        value: state.value +1
+      });
+    
+    case 'DECREMENT':
+      return Object.assign({}, state, {
+        value: state.value -1
+      });
     
     default:
       return state;

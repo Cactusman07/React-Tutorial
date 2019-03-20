@@ -2,7 +2,7 @@
 
 import { ADD_PROFILE } from "./actionConstants";
 
-// Dispatchs a plain action
+// Dispatchs a plain action (Action Creator)
 export const addProfile = (payload: any) => {
   return {
     type: ADD_PROFILE,

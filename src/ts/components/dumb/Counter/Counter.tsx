@@ -1,45 +1,35 @@
 import * as React from "react";
+import PropTypes from 'prop-types';
 import './Counter.scss';
+import { connect } from "react-redux";
+import { getValueState } from "../../../selectors/selectors";
 
-interface CounterProps{}
-interface CounterState{
-  count: number;
+interface CounterProps {
+  value: number,
+  handleIncrement: () => void ,
+  handleDecrement: () => void 
 }
 
-export default class Counter extends React.Component<CounterProps, CounterState>{
-  constructor(props: CounterProps){
-    super(props);
+class Counter extends React.Component<CounterProps>{
+  static propTypes = {
+    value: PropTypes.number.isRequired,
+    handleIncrement: PropTypes.func.isRequired,
+    handleDecrement: PropTypes.func.isRequired
   }
-  state = {
-    count: 0
-  };
 
-  // We could also define defaultProps by adding a count: number type to the 
-  // CounterProps interface, which would then allow us to use:
-  // static defaultProps: Props = { count: 10 }; 
-  // which would set the default count number to use. The count would then be 
-  // called from this.props.count instead of this.state.count
-
-  increment = () => {
-    this.setState({
-      count: (this.state.count += 1)
-    });
-  };
-
-  decrement = () => {
-    this.setState({
-      count: (this.state.count -=1)
-    });
-  };
-
-  render() {
+  render(){
+    const { value, handleIncrement, handleDecrement } = this.props;
     return(
       <div className="counterButtons">
-        <h5>Simple Counter: {this.state.count}</h5>
-        <button onClick={this.decrement}>Decrement</button>
-        <button onClick={this.increment}>Increment</button>
+        <h5>Simple Counter: { value }</h5>
+        <button onClick={ handleDecrement }>Decrement</button>
+        <button onClick={ handleIncrement }>Increment</button>
       </div>
-    );
+    )
   }
-
 }
+
+// Uses connect from react-redux to update the Value in the UI every time it changes.
+export default connect(state => ({
+  value: getValueState(state)
+}))(Counter);

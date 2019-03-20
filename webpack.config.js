@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin"); 
 
 module.exports = (env, argv) => { 
   let isProd = false;
@@ -23,6 +24,10 @@ module.exports = (env, argv) => {
     path: path.resolve(__dirname, "dist")
   },
   resolve: {
+    plugins: [new TsconfigPathsPlugin({  })],
+    alias: {
+      selectors: path.resolve(__dirname, "ts/selectors"),
+    },
     // Add all resolvable extensions.
     extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"]
   },
