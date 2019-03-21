@@ -1,25 +1,32 @@
+// src/ts/components/smart/GithubProfiles
+// This is a container component for the Github Form & Profile Cards
+
 import * as React from 'react';
 import GHForm from './GHForm';
 import CardList from './GHProfileCard';
+import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 
 import "./GithubProfileStyles.scss";
 
-export default class GithubProfiles extends React.Component<any, any>{
-state = {
-    cards: [
-      { login: "Jlord",
-        name:"Jessica Lord",
-        avatar_url:"https://avatars3.githubusercontent.com/u/1305617?v=4",
-        company:"Glitch",
-        key: 1
-      },
-      { login: "VincentGarreau",
-        name:"Vincent Garreau",
-        avatar_url:"https://avatars3.githubusercontent.com/u/961898?v=4",
-        company:"Livestorm",
-        key: 2
-      }
-    ]
+interface ProfileProps {
+  login: string,
+  profileName: string,
+  avatarUrl: string | undefined,
+  company: string,
+  key: string | number
+}
+
+class GithubProfiles extends React.Component<ProfileProps, any>{
+  static propTypes = {
+    login: PropTypes.string.isRequired,
+    profileName: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
+    company: PropTypes.string.isRequired,
+    key: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired,
+    ])
   }
 
   addNewCard = (cardInfo: any) => {
@@ -29,12 +36,18 @@ state = {
   }
 
   public render() {
+    const { login, profileName, avatarUrl, company, key } = this.props;
     return(
       <div className="ghCardSection">
         <h2>Profiles</h2> 
-        <GHForm onSubmit={this.addNewCard} />
+        {/* <GHForm onSubmit={this.addNewCard} /> */}
         <CardList cards={this.state.cards} />
       </div>
     )
   };
 }
+
+// Uses connect from react-redux to update the Value in the UI every time it changes.
+export default connect(state => ({
+
+}))(GithubProfiles);

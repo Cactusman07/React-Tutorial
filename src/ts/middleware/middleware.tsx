@@ -24,6 +24,7 @@ export function forbiddenWordsMiddleware( {dispatch}:{[key:string]:any} ) {
 
         if(foundWord.length){
           return dispatch({ type: "FOUND_BAD_WORD" });
+          console.log("found bad word");
         }
       }
       return next(action);
