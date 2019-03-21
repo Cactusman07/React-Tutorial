@@ -21,6 +21,8 @@ const initialState = {
       key: 2
     }
   ],
+  showIntroButton: true,
+  introText: "Enter your name below, and let's continue.",
   value: 0,
   name: ""
 };
@@ -52,6 +54,18 @@ const rootReducer = (state: any = initialState, action: any) => {
       return Object.assign({}, state, {
         value: state.value -1
       });
+
+    case 'NAME_CHANGE':
+      let newName = (document.getElementById("nameInput") as HTMLInputElement).value;
+      if (newName.length > 0){
+        return Object.assign({}, state, {
+          name: state.name = newName,
+          showIntroButton: state.showIntroButton = false,
+          introText: state.introText = "Welcome " + newName + "! Let's get started."
+        });
+      } else{
+        return state;
+      }
     
     default:
       return state;

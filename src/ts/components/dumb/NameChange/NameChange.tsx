@@ -1,55 +1,58 @@
 // src/ts/components/dumb/Name/NameChange.tsx
 
 import * as React from "react";
+import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import { getNameState, getIntroTextState, getIntroButtonState } from "../../../selectors/selectors";
 
 interface NameChangeProps {
-  defaultName: string;
+  introText: string,
+  showIntroButton: boolean,
+  handleNameChange: () => void
 }
 
-// this.props.defaultName is an object literal being used to initialize this.state (which sets the initial state for the component)
+// this.props.defaultName is an object literal being used to initialize this.state 
+// (which sets the initial state for the component)
 // this.props should not be changes and they are passed in by parent containers.
-export default class NameChange extends React.Component<NameChangeProps, any> {
-  constructor(props: NameChangeProps){
-    super(props);
-    this.state = { name: this.props.defaultName };
-    this.handleOnClick = this.handleOnClick.bind(this);
+// Component updated to initialize static propTypes & get Name from application State. 
+
+class NameChange extends React.Component<NameChangeProps> {
+  static propTypes = {
+    introText: PropTypes.string.isRequired,
+    showIntroButton: PropTypes.bool.isRequired,
+    handleNameChange: PropTypes.func.isRequired
   }
 
-  public handleOnClick(event: any) : void{
-    let newName = (document.getElementById("nameInput") as HTMLInputElement).value;
-    if (newName.length > 0){
-      this.setState({ name: newName });
-      const introText = (document.getElementById("intro") as HTMLParagraphElement);
-      const updateButton = (document.getElementById("update") as HTMLButtonElement);
-      const nameInput = (document.getElementById("nameInput") as HTMLInputElement);
-      const continueText = (document.getElementById("continue") as HTMLParagraphElement);
-      const nameShown = (document.getElementById("nameShown") as HTMLParagraphElement);
-      updateButton.remove();
-      nameInput.remove();
-      introText.remove();
-      nameShown.className = "";
-      continueText.className = "";
-    }
-  }
+  // We are using this.state.name to set the name displayed in the UI. 
+  // Notice in the event onClick we use arrow syntax and the 'this' keyword. 
+  // Without this we would use JavaScript's 'bind' method to achieve the same effect. 
+  // Updated to use this.props, and then refer to the props when rendering the component. 
 
-  // We are using this.state.name to set the name displayed in the UI. Notice in the event onClick we use arrow syntax and the 'this' keyword. Without this we would use JavaScript's 'bind' method to achieve the same effect. 
   public render() {
+    const { handleNameChange, introText, showIntroButton } = this.props;
     return (
       <div>
-        <p id="nameShown" className="hidden">Hi, {this.state.name}!</p>
-        <p id="intro">Enter your name below, and let's continue.</p>
-        <p id="continue" className="hidden">Awesome, let's continue.</p>
-        <input 
-          type="text"
-          id="nameInput"
-          name="nameInput"
-        />
-        <button
-          id="update"
-          name="Update"
-          onClick= {e => this.handleOnClick(e)}
-        >Update name</button> 
+        <p id="intro">{ introText }</p>
+        <div className={showIntroButton ? '' : 'hidden'}>
+          <input 
+            type="text"
+            id="nameInput"
+            name="nameInput"
+          />
+          <button
+            id="update"
+            name="Update"
+            onClick= { handleNameChange }
+          >Update name</button> 
+        </div>
       </div>
     );
   }
 }
+
+// Uses connect from react-redux to update the Value in the UI every time it changes.
+export default connect(state => ({
+  name: getNameState(state),
+  introText: getIntroTextState(state),
+  showIntroButton: getIntroButtonState(state)
+}))(NameChange);

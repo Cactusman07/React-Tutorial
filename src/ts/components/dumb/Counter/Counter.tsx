@@ -17,7 +17,7 @@ class Counter extends React.Component<CounterProps>{
     handleDecrement: PropTypes.func.isRequired
   }
 
-  render(){
+  public render(){
     const { value, handleIncrement, handleDecrement } = this.props;
     return(
       <div className="counterButtons">

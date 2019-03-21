@@ -24,7 +24,11 @@ class App extends React.Component<any, any>{
       <div>
         <div className="row mt-5">
           <div className="col-md-8">
-            <NameChange defaultName="User" />
+            <NameChange 
+              introText = { (store.getState()).introText }
+              showIntroButton = { (store.getState()).showIntroButton}
+              handleNameChange={ () => store.dispatch({ type: 'NAME_CHANGE' })}
+            />
             <br />
           </div>
           <div className="col-md-4">
