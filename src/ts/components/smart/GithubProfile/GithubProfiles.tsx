@@ -3,51 +3,48 @@
 
 import * as React from 'react';
 import GHForm from './GHForm';
-import CardList from './GHProfileCard';
+import GithubProfileCard from './GHProfileCard';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
+import { getProfiles } from "@selectors/selectors";
+import { ADD_PROFILE } from "@actions/actionConstants";
 
 import "./GithubProfileStyles.scss";
+import store from '@store/store';
 
-interface ProfileProps {
-  login: string,
-  profileName: string,
-  avatarUrl: string | undefined,
-  company: string,
-  key: string | number
+interface profileProps{
+  profileArray: string[];
 }
 
-class GithubProfiles extends React.Component<ProfileProps, any>{
+class GithubProfiles extends React.Component<profileProps>{
   static propTypes = {
-    login: PropTypes.string.isRequired,
-    profileName: PropTypes.string.isRequired,
-    avatarUrl: PropTypes.string.isRequired,
-    company: PropTypes.string.isRequired,
-    key: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.number.isRequired,
-    ])
-  }
-
-  addNewCard = (cardInfo: any) => {
-    this.setState((prevState: { cards: { concat: (arg0: any) => void; }; }) => ({
-      cards: prevState.cards.concat(cardInfo)
-    }));
+    profileArray: PropTypes.array.isRequired
   }
 
   public render() {
-    const { login, profileName, avatarUrl, company, key } = this.props;
+    const { profileArray } = this.props;
     return(
       <div className="ghCardSection">
         <h2>Profiles</h2> 
-        {/* <GHForm onSubmit={this.addNewCard} /> */}
-        <CardList cards={this.state.cards} />
+        <GHForm />
+        
+        <div className="row">
+          {this.props.profileArray.map((profile: any) =>
+            <GithubProfileCard
+              login={ profile.login }
+              profileName={ profile.name }
+              avatarUrl=  { profile.avatar_url }
+              company={ profile.company }
+              key={ profile.id }
+            />
+          )}
+        </div>  
       </div>
     )
   };
 }
 
-// Uses connect from react-redux to update the Value in the UI every time it changes.
+// Uses connect from react-redux to update the Cards in the UI every time it changes.
 export default connect(state => ({
-
+  profileArray: getProfiles(state)
 }))(GithubProfiles);

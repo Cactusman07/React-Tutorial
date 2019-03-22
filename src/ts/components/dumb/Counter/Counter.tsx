@@ -2,7 +2,7 @@ import * as React from "react";
 import PropTypes from 'prop-types';
 import './Counter.scss';
 import { connect } from "react-redux";
-import { getValueState } from "../../../selectors/selectors";
+import { getValueState } from "@selectors/selectors";
 
 interface CounterProps {
   value: number,

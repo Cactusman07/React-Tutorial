@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Axios from 'axios';
+import store from "@store/store";
+import { ADD_PROFILE } from '@actions/actionConstants';
 
 export default class GHForm extends React.Component<any,any>{
   constructor(props: any){
@@ -9,23 +10,7 @@ export default class GHForm extends React.Component<any,any>{
 
   handleSubmit = (event: React.FormEvent<EventTarget>): void => {
     event.preventDefault();
-
-    if (this.state.userName !== ""){
-      // use Axios to GET additional Cards
-      Axios.get(`https://api.github.com/users/${this.state.userName}`)
-      .then(resp => {
-        this.props.onSubmit(resp.data);
-        console.log(resp.data);
-        this.setState({userName: ''});
-        const successPopup = (document.getElementById('success') as HTMLDivElement);
-        successPopup.className="";
-        setTimeout(
-          function(){
-            successPopup.className="hidden";
-          }, 600
-        );
-      })
-    }
+    store.dispatch({ type: ADD_PROFILE })
   };
 
   public render() {
@@ -34,7 +19,8 @@ export default class GHForm extends React.Component<any,any>{
         <div className="col-sm-12">
           <form onSubmit={this.handleSubmit}>
             <label>Github username lookup:<br />
-              <input type="text"
+              <input id="githubUserName" 
+                type="text"
                 value = {this.state.userName}
                 onChange = {(event) => this.setState({userName: event.target.value})}
                 placeholder = "Enter Username..." >

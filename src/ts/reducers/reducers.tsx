@@ -1,9 +1,10 @@
 // /src/ts/reducers/reducers.tsx
+import Axios from 'axios';
 
 import { 
   ADD_PROFILE, 
   FOUND_BAD_WORD
-} from "../actions/actionConstants";
+} from "@actions/actionConstants";
 
 // Initial State of application
 const initialState = {
@@ -12,13 +13,13 @@ const initialState = {
       name:"Jessica Lord",
       avatar_url:"https://avatars3.githubusercontent.com/u/1305617?v=4",
       company:"Glitch",
-      key: 1
+      id:"1"
     },
     { login: "VincentGarreau",
       name:"Vincent Garreau",
       avatar_url:"https://avatars3.githubusercontent.com/u/961898?v=4",
       company:"Livestorm",
-      key: 2
+      id:"2"
     }
   ],
   showIntroButton: true,
@@ -38,9 +39,14 @@ const rootReducer = (state: any = initialState, action: any) => {
   switch (action.type){
 
     case ADD_PROFILE:
-      return Object.assign({}, state, {
-        profiles: state.profiles.concat(action.payload)
-      });
+      let newProfile = getUserProfile();
+/*       if(newProfile !== null){ */
+        return Object.assign({}, state, {
+          profiles: state.profiles.concat(newProfile)
+        });
+/*       } else{
+        return state;
+      } */
 
     case FOUND_BAD_WORD:
       return alert("Sorry, that type of bad language is not allowed here!");
@@ -69,6 +75,39 @@ const rootReducer = (state: any = initialState, action: any) => {
     
     default:
       return state;
+  }
+}
+
+// Adding async & await as "syntactic sugar" over Promises
+const getUserProfile = () => {
+  let userName = (document.getElementById("githubUserName")as HTMLInputElement).value;
+
+  if (userName !== ""){
+    console.log(`Fetching ${userName}`);
+    // use Axios to GET additional Cards
+
+    Axios.get(`https://api.github.com/users/${userName}`)
+      .then(async function(response){
+        console.log(response.data);
+        await successPopupFunc();
+      });    
+    
+    // Display success popup & resets input field value to ""
+    const successPopupFunc = () => {
+      const successPopup = (document.getElementById('success') as HTMLDivElement);
+      successPopup.className="";
+      setTimeout(
+        function(){
+          successPopup.className="hidden";
+        }, 600
+      );
+      (document.getElementById("githubUserName")as HTMLInputElement).value = "";
+    }
+    
+
+    // Log data & return data Profile json 
+    
+    
   }
 }
 

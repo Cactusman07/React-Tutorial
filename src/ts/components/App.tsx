@@ -6,7 +6,7 @@ import * as React from "react";
 import NameChange from "./dumb/NameChange/NameChange";
 import Counter from "./dumb/Counter/Counter";
 import GithubProfiles from "./smart/GithubProfile/GithubProfiles";
-import store from "../store/store";
+import store from "@store/store";
 
 // Remove these in production build
 // Log initial State
@@ -41,7 +41,7 @@ class App extends React.Component<any, any>{
           </div>
         </div>
         <div>
-          <GithubProfiles />
+          <GithubProfiles profileArray= { (store.getState()).profileArray } />
         </div>
       </div>
     );

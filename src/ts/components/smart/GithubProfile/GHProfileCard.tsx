@@ -3,31 +3,26 @@ import PropTypes from "prop-types";
 
 interface GithubProfileCardProps{ 
   login: string; 
-  avatar_url: string | undefined; 
-  name: string; 
+  avatarUrl: string | undefined; 
+  profileName: string; 
   company: string;
-  key: string | number;
 }
 
-class GithubProfileCard extends React.Component<GithubProfileCardProps, any> {
+export default class GithubProfileCard extends React.Component<GithubProfileCardProps, any> {
   static propTypes = {
     login: PropTypes.string.isRequired,
     profileName: PropTypes.string.isRequired,
     avatarUrl: PropTypes.string.isRequired,
-    company: PropTypes.string.isRequired,
-    key: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.number.isRequired,
-    ])
+    company: PropTypes.string.isRequired
   }
 
   public render() {
-    const { login, avatar_url, name, company, key } = this.props;
+    const { login, avatarUrl, profileName, company } = this.props;
 
-    let avatarUrl = avatar_url;
+    let avatarUrlString = avatarUrl;
 
-    if (avatarUrl == undefined){
-      avatarUrl = "public/default-user-icon.jpg"
+    if (avatarUrlString == undefined){
+      avatarUrlString = "public/default-user-icon.jpg"
     }
 
     return(
@@ -37,10 +32,10 @@ class GithubProfileCard extends React.Component<GithubProfileCardProps, any> {
             <p>{login}</p>
           </div>
           <div className="ghProfile">
-            <img alt="" src={avatarUrl}></img>
+            <img alt="" src={avatarUrlString}></img>
           </div>
           <div className="ghUser">
-            <h3>{name}</h3>
+            <h3>{profileName}</h3>
           </div>
           <div className="ghCompany">
             <p>{company}</p>
@@ -50,13 +45,3 @@ class GithubProfileCard extends React.Component<GithubProfileCardProps, any> {
     );
   }
 }
-
-const CardList = (props: { cards: { map: (arg0: (card: any) => JSX.Element) => React.ReactNode; }; }) => {
-    return(
-      <div className="row">
-        {props.cards.map((card) => <GithubProfileCard key={card.id} {...card} />)}
-      </div>
-    )
-}
-
-export default CardList;

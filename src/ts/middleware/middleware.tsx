@@ -1,6 +1,6 @@
 // /src/ts/middleware/middleware.tsx
 
-import { ADD_PROFILE } from "../actions/actionConstants";
+import { ADD_PROFILE } from "@actions/actionConstants";
 
 const forbiddenWords = ["spam", "Liverpool", "Liverpool FC"];
 
@@ -13,19 +13,19 @@ const forbiddenWords = ["spam", "Liverpool", "Liverpool FC"];
 // as string, and all values on that object as any.
 export function forbiddenWordsMiddleware( {dispatch}:{[key:string]:any} ) {
   return function(next: (arg0: any) => void) {
-    return function (action: { type: string; payload: { title: { includes: (arg0: string) => void; }; }; }) {
+    return function (action: any) {
 
       // When action type = ADD_PROFILE, check if the payload.title contains a "bad word." If it does, then dispatch
       // an action of Type "FOUND_BAD_WORD" - otherwise, let the next action pass. 
       if(action.type === ADD_PROFILE){
-        const foundWord = forbiddenWords.filter(
+        /* const foundWord = forbiddenWords.filter(
           word => action.payload.title.includes(word)
         );
 
         if(foundWord.length){
           return dispatch({ type: "FOUND_BAD_WORD" });
           console.log("found bad word");
-        }
+        } */
       }
       return next(action);
     }

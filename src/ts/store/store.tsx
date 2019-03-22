@@ -2,8 +2,8 @@
 
 import {createStore, applyMiddleware }from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from "../reducers/reducers";
-import { forbiddenWordsMiddleware } from "../middleware/middleware";
+import rootReducer from "@reducers/reducers";
+import { forbiddenWordsMiddleware } from "@middleware/middleware";
 import thunk from "redux-thunk";
 
 // Either use this below, or use 'redux-devtools-extension' - like above

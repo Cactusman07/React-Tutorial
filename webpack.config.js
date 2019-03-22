@@ -27,6 +27,11 @@ module.exports = (env, argv) => {
     plugins: [new TsconfigPathsPlugin({  })],
     alias: {
       selectors: path.resolve(__dirname, "ts/selectors"),
+      actions: path.resolve(__dirname, "ts/actions"),
+      components: path.resolve(__dirname, "ts/components"),
+      middleware: path.resolve(__dirname, "ts/middleware"),
+      reducers: path.resolve(__dirname, "ts/reducers"),
+      store: path.resolve(__dirname, "ts/store"),
     },
     // Add all resolvable extensions.
     extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"]
