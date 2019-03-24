@@ -27,7 +27,11 @@ class App extends React.Component<any, any>{
             <NameChange 
               introText = { (store.getState()).introText }
               showIntroButton = { (store.getState()).showIntroButton}
-              handleNameChange={ () => store.dispatch({ type: 'NAME_CHANGE' })}
+              handleNameChange={ () => {
+                if (((document.getElementById("nameInput") as HTMLInputElement).value).length > 0){
+                  store.dispatch({ type: 'NAME_CHANGE' })
+                }
+              }}
             />
             <br />
           </div>

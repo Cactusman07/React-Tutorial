@@ -7,10 +7,8 @@ import GithubProfileCard from './GHProfileCard';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { getProfiles } from "@selectors/selectors";
-import { ADD_PROFILE } from "@actions/actionConstants";
 
 import "./GithubProfileStyles.scss";
-import store from '@store/store';
 
 interface profileProps{
   profileArray: string[];
@@ -29,7 +27,7 @@ class GithubProfiles extends React.Component<profileProps>{
         <GHForm />
         
         <div className="row">
-          {this.props.profileArray.map((profile: any) =>
+          {profileArray.map((profile: any) =>
             <GithubProfileCard
               login={ profile.login }
               profileName={ profile.name }

@@ -1,32 +1,11 @@
 // /src/ts/reducers/reducers.tsx
-import Axios from 'axios';
-
 import { 
   ADD_PROFILE, 
   FOUND_BAD_WORD
 } from "@actions/actionConstants";
+import { initialState } from "@store/initialState";
+import { isNullOrUndefined } from "util";
 
-// Initial State of application
-const initialState = {
-  profiles: [
-    { login: "Jlord",
-      name:"Jessica Lord",
-      avatar_url:"https://avatars3.githubusercontent.com/u/1305617?v=4",
-      company:"Glitch",
-      id:"1"
-    },
-    { login: "VincentGarreau",
-      name:"Vincent Garreau",
-      avatar_url:"https://avatars3.githubusercontent.com/u/961898?v=4",
-      company:"Livestorm",
-      id:"2"
-    }
-  ],
-  showIntroButton: true,
-  introText: "Enter your name below, and let's continue.",
-  value: 0,
-  name: ""
-};
 
 // In the below rootReducer, the initial State is left untouched. 
 // Object.assign is part of ES6 and not supported by older browsers.
@@ -37,19 +16,25 @@ const rootReducer = (state: any = initialState, action: any) => {
   }
 
   switch (action.type){
-
+    
     case ADD_PROFILE:
-      let newProfile = getUserProfile();
-/*       if(newProfile !== null){ */
-        return Object.assign({}, state, {
-          profiles: state.profiles.concat(newProfile)
-        });
-/*       } else{
+      console.log("Adding profile...");  
+      if(isNullOrUndefined(action.payload)){
+        console.log("null or undefined " + action.payload);
         return state;
-      } */
+      } 
+      else{
+        console.log(action.payload);
+        successPopupFunc();
+        return Object.assign({}, state, {
+          profiles: state.profiles.concat(action.payload)
+        });
+      }
 
     case FOUND_BAD_WORD:
-      return alert("Sorry, that type of bad language is not allowed here!");
+      //alert("Sorry, that type of bad language is not allowed here!");
+      console.log("found bad words");
+      return state;
 
     case 'INCREMENT':
       return Object.assign({}, state, {
@@ -78,37 +63,19 @@ const rootReducer = (state: any = initialState, action: any) => {
   }
 }
 
-// Adding async & await as "syntactic sugar" over Promises
-const getUserProfile = () => {
-  let userName = (document.getElementById("githubUserName")as HTMLInputElement).value;
-
-  if (userName !== ""){
-    console.log(`Fetching ${userName}`);
-    // use Axios to GET additional Cards
-
-    Axios.get(`https://api.github.com/users/${userName}`)
-      .then(async function(response){
-        console.log(response.data);
-        await successPopupFunc();
-      });    
-    
-    // Display success popup & resets input field value to ""
-    const successPopupFunc = () => {
-      const successPopup = (document.getElementById('success') as HTMLDivElement);
-      successPopup.className="";
-      setTimeout(
-        function(){
-          successPopup.className="hidden";
-        }, 600
-      );
-      (document.getElementById("githubUserName")as HTMLInputElement).value = "";
-    }
-    
-
-    // Log data & return data Profile json 
-    
-    
-  }
-}
+// Display success popup & resets input field value to ""
+const successPopupFunc = () => {
+  const formValue = (document.getElementById("githubUserName")as HTMLInputElement);
+  formValue.value = "";
+  
+  const successPopup = (document.getElementById('success') as HTMLDivElement);
+  successPopup.className="";
+  setTimeout(
+    function(){
+      successPopup.className="hidden";
+    }, 600
+  );
+  
+} 
 
 export default rootReducer;
