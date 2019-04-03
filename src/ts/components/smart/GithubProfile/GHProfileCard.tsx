@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 interface GithubProfileCardProps{ 
   login: string; 
-  avatarUrl: string | undefined; 
+  avatarUrl: string; 
   profileName: string; 
   company: string;
 }
@@ -11,18 +11,27 @@ interface GithubProfileCardProps{
 export default class GithubProfileCard extends React.Component<GithubProfileCardProps, any> {
   static propTypes = {
     login: PropTypes.string.isRequired,
-    profileName: PropTypes.string.isRequired,
-    avatarUrl: PropTypes.string.isRequired,
-    company: PropTypes.string.isRequired
+    profileName: PropTypes.string,
+    avatarUrl: PropTypes.string,
+    company: PropTypes.string
   }
 
   public render() {
     const { login, avatarUrl, profileName, company } = this.props;
 
     let avatarUrlString = avatarUrl;
-
-    if (avatarUrlString == undefined){
+    if (!avatarUrlString){
       avatarUrlString = "public/default-user-icon.jpg"
+    }
+
+    let profileNameString = profileName;
+    if (!profileNameString){
+      profileNameString = "*name n/a*";
+    }
+
+    let companyString = company;
+    if (!companyString){
+      companyString = "*no company listed*";
     }
 
     return(
@@ -35,10 +44,10 @@ export default class GithubProfileCard extends React.Component<GithubProfileCard
             <img alt="" src={avatarUrlString}></img>
           </div>
           <div className="ghUser">
-            <h3>{profileName}</h3>
+            <h3>{profileNameString}</h3>
           </div>
           <div className="ghCompany">
-            <p>{company}</p>
+            <p>{companyString}</p>
           </div>
         </div>
       </div>

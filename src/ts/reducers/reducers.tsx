@@ -32,8 +32,7 @@ const rootReducer = (state: any = initialState, action: any) => {
       }
 
     case FOUND_BAD_WORD:
-      //alert("Sorry, that type of bad language is not allowed here!");
-      console.log("found bad words");
+      alert("Sorry, that type of foul language is not allowed here! Please try again");
       return state;
 
     case 'INCREMENT':

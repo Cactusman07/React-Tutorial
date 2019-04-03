@@ -1,10 +1,10 @@
 // /src/ts/middleware/middleware.tsx
 
-import { ADD_PROFILE } from "@actions/actionConstants";
+import { ADD_PROFILE, FOUND_BAD_WORD } from "@actions/actionConstants";
 
 const forbiddenWords = ["spam", "Liverpool", "Liverpool FC"];
 
-// The below (originally... forbiddenWordsMiddleware ( {dispatch} )... ) 
+// The below (originally... forbiddenWordsMiddleware ( {dispatch} )... ) - like below
 // is an example of using object destructuring assignment to extract className
 // from the first argument object. See the below article for more information:
 // https://medium.com/front-end-weekly/typescript-error-ts7031-makes-me-go-huh-c81cf76c829b
@@ -13,9 +13,25 @@ const forbiddenWords = ["spam", "Liverpool", "Liverpool FC"];
 // as string, and all values on that object as any.
 
 export const forbiddenWordsMiddleware = (store: any) => (next: any) => (action: any) => {
-  console.log("Middleware triggered:", action);
+  console.log("Middleware entered:", action);
   const returnValue = next(action);
-  console.log(returnValue);
+  console.log("Next action:", returnValue);
+
+  // When Action_Type = ADD_PROFILE, then check if the payload title contains a "bad word" - if yes, then dispatch an 
+  // action of Type FOUND_BAD_WORD - otherwise, let action pass. 
+  if(action.type === ADD_PROFILE){
+    //console.log(action.payload.login);
+    const foundWord = forbiddenWords.filter(
+      word => action.payload.login.includes(word)
+    );
+
+    if(foundWord.length){
+      console.log("Bad word!");
+      return store.dispatch({type: FOUND_BAD_WORD});
+    }
+
+  }
+  
   return returnValue;
 }
 
@@ -23,21 +39,7 @@ export const forbiddenWordsMiddleware = (store: any) => (next: any) => (action: 
 export function forbiddenWordsMiddleware( dispatch:any ) {
   return function(next: (arg0: any) => void) {
     return function (action: any) {
-
-      // When action type = ADD_PROFILE, check if the payload.title contains a "bad word." If it does, then dispatch
-      // an action of Type "FOUND_BAD_WORD" - otherwise, let the next action pass. 
-      if(action.type === ADD_PROFILE){
-        console.log(action.text);
-        const foundWord = forbiddenWords.filter(
-          word => action.text.includes(word)
-        );
-
-        if(foundWord.length){
-          console.log("found bad word");
-          return dispatch({ type: "FOUND_BAD_WORD" });
-        }
-      }
-      return next(action);
-    }
-  }
-} */
+    ... 
+  ...
+...
+*/

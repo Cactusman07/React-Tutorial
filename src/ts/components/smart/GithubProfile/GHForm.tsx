@@ -1,7 +1,6 @@
 import * as React from 'react';
 import store from "@store/store";
 import { ADD_PROFILE } from '@actions/actionConstants';
-import "regenerator-runtime";
 import Axios from "axios";
 
 export default class GHForm extends React.Component<any,any>{
@@ -21,11 +20,16 @@ export default class GHForm extends React.Component<any,any>{
       Axios.get(`https://api.github.com/users/${userName}`)
       .then(function(response){
         console.log(response);
-        store.dispatch({ type: ADD_PROFILE, payload: response.data })
+        store.dispatch({ type: ADD_PROFILE, payload: response.data });
+        (document.getElementById("githubUserName") as HTMLInputElement).value = "";
       })
       .catch(function(error){
         console.log(error);
+        alert("Sorry, that user is not found.");
+        //(document.getElementById("githubUserName") as HTMLInputElement).value = "";
       })
+    } else{
+      alert("Please enter a user name to search for.");
     }
   };
 
