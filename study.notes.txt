@@ -41,6 +41,7 @@ aAsync().then(
 
 You can see how arrow functions make use of the .then & .done keywords to help the chaining process. It reduces the use of the 'this' keyword, as Arrow Functions allow you to retain the scope of the caller inside the function. You don't need to use the .bind() method, or create a closure using var self = this;
 
+The spread operator (...) can be used to spread an object with nested data into an array of objects. It allows an object that is iterable, like an array expression or a string, to be expanded in places where zero or more arguments (for function calls) or elements (array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs are expected. 
 
 __** REACT **__
 
@@ -163,7 +164,7 @@ Redux-Thunk is a middleware for Redux. With thunk, you can return functions from
 	
 To recap: REDUX does NOT understand other types of Action than a plain object. IF you want to move async logic from React to Redux and be able to return functions instead of plain objects then you have to use a custom middleware. 
 	
-REDUX Saga is middleware for managing Side-Effects and is an alternative to Redux-Thunk. The idea od Saga is that of having a separate thread in your application for dealing with 'impure' actions: API calls, storage access. It doesn't use regular JavaScript - the functions are called Sagas and are based on generator functions. A Generator function is a JavaScript function which can be paused and resumed during it's execution. Generator functions are denoted with an asterisk and make use of the yield keyword. I.E: 
+REDUX Saga is middleware for managing Side-Effects and is an alternative to Redux-Thunk. The idea of Saga is that of having a separate thread in your application for dealing with 'impure' actions: API calls, storage access. It doesn't use regular JavaScript - the functions are called Sagas and are based on generator functions. A Generator function is a JavaScript function which can be paused and resumed during it's execution. Generator functions are denoted with an asterisk and make use of the yield keyword. I.E: 
 
 function* generatorLoop() {
 	for (var i = 0; i < 15; i++) {

@@ -55,7 +55,11 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "@typescript-eslint/parser": "^1.6.0",
+    "eslint": "^5.16.0"
+  },
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
