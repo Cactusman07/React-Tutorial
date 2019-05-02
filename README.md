@@ -21,6 +21,8 @@ The documentation on SCSS is quite good (much better than typescript!) - so I've
 
 If you are interested, you can read the notes that I took on these, and on further subjects, by viewing the study.notes.txt file in the repository.
 
+Note: run `npx mrm lint-staged` to start using lint-staged.
+
 ## Currently implementations and technologies used:
 - Webpack, from scratch (Webpack is a static module bundler for JavaScipt applications)
 - Babel (A toolchain that compiles EMCAScript2015+ to backwards compatible versions of JavaScript). It can also compile .jsx to .js
