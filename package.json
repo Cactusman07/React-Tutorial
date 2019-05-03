@@ -36,6 +36,7 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
     "file-loader": "^3.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -69,7 +70,7 @@
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "test-change": "echo \"Error: no tests installed\" && exit 1",
+    "test": "",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check --watch"
   },
