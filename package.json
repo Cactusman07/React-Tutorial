@@ -1,7 +1,7 @@
 {
   "name": "react-tutorial",
   "version": "1.0.0",
-  "description": "This project is to help learn how to set up Babel, Webpack & React from scratch, then implement typescript and redux with a backend SQL database.",
+  "description": "This project is to help learn how to set up Babel, Webpack & React from scratch, then implement typescript and redux, along with linting, testing, and eventualyl with a backend SQL database & service integration.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -72,7 +72,8 @@
     "build:dev": "webpack --mode development",
     "test": "",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check --watch"
+    "type-check:watch": "npm run type-check --watch",
+    "lint": "tsc --noEmit && eslint \"*/**/*.{js,ts,tsx}\" --quiet --fix"
   },
   "husky": {
     "hooks": {

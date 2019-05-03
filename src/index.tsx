@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import App from "./ts/components/App";
 import { Provider } from "react-redux";
 import store from "./ts/store/store";
-import * as serviceWorker from './ts/serviceWorker';
+//import * as serviceWorker from './ts/serviceWorker';
 
 // Styles
 import './styles/index.scss';
@@ -17,7 +17,7 @@ const rootElement = document.getElementById("app");
 class Main extends React.Component<any, any> {
 
   // The constructor method is used to initialize the class. Here, super(props) is called which calls the constructor method on the parent class 'React.Component' - this passes any props that were passed into our constructor. 
-  constructor(props: any){
+  public constructor(props: any){
     super(props);
   }
 
@@ -39,4 +39,4 @@ ReactDOM.render(<Main />, rootElement);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
-serviceWorker.unregister();
+//serviceWorker.unregister();

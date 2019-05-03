@@ -4,12 +4,12 @@ import { ADD_PROFILE } from '@actions/actionConstants';
 import Axios from "axios";
 
 export default class GHForm extends React.Component<any,any>{
-  constructor(props: any){
+  public constructor(props: any){
     super(props);
     this.state = { userName: ""};
   }
 
-  handleSubmit = (event: React.FormEvent<EventTarget>): void => {
+  public handleSubmit = (event: React.FormEvent<EventTarget>): void => {
     event.preventDefault();
     let userName = (document.getElementById("githubUserName")as HTMLInputElement).value;
     

@@ -15,6 +15,20 @@ const rootReducer = (state: any = initialState, action: any) => {
     return state;
   }
 
+  // Display success popup & resets input field value to ""
+  const successPopupFunc = () => {
+    const formValue = (document.getElementById("githubUserName") as HTMLInputElement);
+    formValue.value = "";
+
+    const successPopup = (document.getElementById('success') as HTMLDivElement);
+    successPopup.className = "";
+    setTimeout(
+      function () {
+        successPopup.className = "hidden";
+      }, 600
+    );
+  } 
+
   switch (action.type){
     
     case ADD_PROFILE:
@@ -61,20 +75,5 @@ const rootReducer = (state: any = initialState, action: any) => {
       return state;
   }
 }
-
-// Display success popup & resets input field value to ""
-const successPopupFunc = () => {
-  const formValue = (document.getElementById("githubUserName")as HTMLInputElement);
-  formValue.value = "";
-  
-  const successPopup = (document.getElementById('success') as HTMLDivElement);
-  successPopup.className="";
-  setTimeout(
-    function(){
-      successPopup.className="hidden";
-    }, 600
-  );
-  
-} 
 
 export default rootReducer;

@@ -10,12 +10,12 @@ import { getProfiles } from "@selectors/selectors";
 
 import "./GithubProfileStyles.scss";
 
-interface profileProps{
+interface ProfileProps{
   profileArray: string[];
 }
 
-class GithubProfiles extends React.Component<profileProps>{
-  static propTypes = {
+class GithubProfiles extends React.Component<ProfileProps>{
+  public static propTypes = {
     profileArray: PropTypes.array.isRequired
   }
 
@@ -31,7 +31,7 @@ class GithubProfiles extends React.Component<profileProps>{
             <GithubProfileCard
               login={ profile.login }
               profileName={ profile.name }
-              avatarUrl=  { profile.avatar_url }
+              avatarUrl=  { profile.avatarUrl }
               company={ profile.company }
               key={ profile.id }
             />

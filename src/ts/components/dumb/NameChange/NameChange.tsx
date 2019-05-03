@@ -17,7 +17,7 @@ interface NameChangeProps {
 // Component updated to initialize static propTypes & get Name from application State. 
 
 class NameChange extends React.Component<NameChangeProps> {
-  static propTypes = {
+  public static propTypes = {
     introText: PropTypes.string.isRequired,
     showIntroButton: PropTypes.bool.isRequired,
     handleNameChange: PropTypes.func.isRequired

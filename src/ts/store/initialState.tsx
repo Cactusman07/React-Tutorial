@@ -5,13 +5,13 @@ export const initialState = {
   profiles: [
     { login: "Jlord",
       name:"Jessica Lord",
-      avatar_url:"https://avatars3.githubusercontent.com/u/1305617?v=4",
+      avatarUrl:"https://avatars3.githubusercontent.com/u/1305617?v=4",
       company:"Glitch",
       id:"1"
     },
     { login: "VincentGarreau",
       name:"Vincent Garreau",
-      avatar_url:"https://avatars3.githubusercontent.com/u/961898?v=4",
+      avatarUrl:"https://avatars3.githubusercontent.com/u/961898?v=4",
       company:"Livestorm",
       id:"2"
     }

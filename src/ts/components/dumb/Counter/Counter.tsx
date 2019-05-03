@@ -11,7 +11,7 @@ interface CounterProps {
 }
 
 class Counter extends React.Component<CounterProps>{
-  static propTypes = {
+  public static propTypes = {
     value: PropTypes.number.isRequired,
     handleIncrement: PropTypes.func.isRequired,
     handleDecrement: PropTypes.func.isRequired

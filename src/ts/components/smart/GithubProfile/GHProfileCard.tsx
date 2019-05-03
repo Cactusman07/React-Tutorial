@@ -9,7 +9,7 @@ interface GithubProfileCardProps{
 }
 
 export default class GithubProfileCard extends React.Component<GithubProfileCardProps, any> {
-  static propTypes = {
+  public static propTypes = {
     login: PropTypes.string.isRequired,
     profileName: PropTypes.string,
     avatarUrl: PropTypes.string,

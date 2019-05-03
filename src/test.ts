@@ -1,4 +1,5 @@
 // Tutorials and notes for starting out with TypeScript. run "tsc test" from this folder to check out how this code transpiles - will transpile to test.js.
+/* eslint-disable no-console */
 
 import { string } from "prop-types";
 
@@ -8,9 +9,9 @@ console.log(message);
 
 let x = 10;
 
-let isBeginner: boolean = true;
-let total: number = 0;
-let name: string = "Sam";
+let isBeginner = true;
+let total = 0;
+let name = "Sam";
 
 let sentence: string = `My name is ${name}
 I am a beginner in Typescript`;
@@ -20,7 +21,7 @@ let n: null = null;
 let u: undefined = undefined;
 
 let list1: number[] = [1,2,3];
-let list2: Array<number> = [1,2,3];
+let list2: number[] = [1,2,3];
 
 let person1: [string, number] = ['Chris', 22];
 

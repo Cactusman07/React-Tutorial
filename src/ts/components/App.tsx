@@ -15,7 +15,7 @@ console.log(store.getState());
 const unsubscribe = store.subscribe(() => console.log(store.getState()))
 
 class App extends React.Component<any, any>{
-  constructor(props: any){
+  public constructor(props: any){
     super(props);
   }
 
