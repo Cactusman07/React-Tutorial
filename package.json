@@ -29,7 +29,7 @@
     "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
     "@typescript-eslint/parser": "^1.7.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
