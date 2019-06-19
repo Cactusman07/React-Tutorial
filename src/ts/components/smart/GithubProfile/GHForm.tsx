@@ -26,7 +26,6 @@ export default class GHForm extends React.Component<any,any>{
       .catch(function(error){
         console.log(error);
         alert("Sorry, that user is not found.");
-        //(document.getElementById("githubUserName") as HTMLInputElement).value = "";
       })
     } else{
       alert("Please enter a user name to search for.");

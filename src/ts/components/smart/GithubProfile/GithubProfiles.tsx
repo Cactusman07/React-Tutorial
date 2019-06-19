@@ -31,7 +31,7 @@ class GithubProfiles extends React.Component<ProfileProps>{
             <GithubProfileCard
               login={ profile.login }
               profileName={ profile.name }
-              avatarUrl=  { profile.avatarUrl }
+              avatarUrl=  { profile.avatar_url }
               company={ profile.company }
               key={ profile.id }
             />

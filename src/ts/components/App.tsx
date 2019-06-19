@@ -8,9 +8,6 @@ import Counter from "./dumb/Counter/Counter";
 import GithubProfiles from "./smart/GithubProfile/GithubProfiles";
 import store from "@store/store";
 
-// Remove these in production build
-// Log initial State
-console.log(store.getState());
 // Every time state changes, log it.
 const unsubscribe = store.subscribe(() => console.log(store.getState()))
 

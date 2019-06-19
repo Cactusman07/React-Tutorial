@@ -20,7 +20,6 @@ export const forbiddenWordsMiddleware = (store: any) => (next: any) => (action: 
   // When Action_Type = ADD_PROFILE, then check if the payload title contains a "bad word" - if yes, then dispatch an 
   // action of Type FOUND_BAD_WORD - otherwise, let action pass. 
   if(action.type === ADD_PROFILE){
-    //console.log(action.payload.login);
     const foundWord = forbiddenWords.filter(
       word => action.payload.login.includes(word)
     );
@@ -34,12 +33,3 @@ export const forbiddenWordsMiddleware = (store: any) => (next: any) => (action: 
   
   return returnValue;
 }
-
-/* 
-export function forbiddenWordsMiddleware( dispatch:any ) {
-  return function(next: (arg0: any) => void) {
-    return function (action: any) {
-    ... 
-  ...
-...
-*/

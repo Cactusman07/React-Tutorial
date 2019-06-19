@@ -19,9 +19,11 @@ export default class GithubProfileCard extends React.Component<GithubProfileCard
   public render() {
     const { login, avatarUrl, profileName, company } = this.props;
 
-    let avatarUrlString = avatarUrl;
-    if (!avatarUrlString){
+    let avatarUrlString = '';
+    if (!avatarUrl){
       avatarUrlString = "public/default-user-icon.jpg"
+    } else {
+      avatarUrlString = avatarUrl;
     }
 
     let profileNameString = profileName;
